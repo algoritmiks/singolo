@@ -1,14 +1,13 @@
     body {
-        margin: 0 0 0 0;
+        margin: 0;
     }
 
     header {
-        display: flex;
         background-color: #2d303a;
         height: 89px;
         border-bottom: 6px solid #323746;
     }
-
+      
     main {
         background-color: #f06c64;
         height: 600px;
@@ -20,20 +19,45 @@
         height: 495px;
         background-color: #f2f2f2;
         border-top: 6px solid #ffffff;
-
     }
 
     .content {
         width: 1020px;
-        margin: auto auto;
+        margin: 0 auto;
+    }
+    
+    .header-box{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 89px;
     }
 
     .logo {
-        height: 100%;
-        width: max-content;
         color: #ffffff;
     }
-
+ 
     header h1 span {
         color: #f06c64;
     }
+ 
+    a {
+        text-decoration: none;
+        color: #ffffff;
+    }
+    
+    a:hover {
+        color: #f06c64;
+    }
+
+    ul {
+        display: flex; 
+    }
+
+    li {
+        margin-left: 30px;
+        color: #494e62;
+    }
+
+  
+    
