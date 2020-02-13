@@ -1,0 +1,39 @@
+    body {
+        margin: 0 0 0 0;
+    }
+
+    header {
+        display: flex;
+        background-color: #2d303a;
+        height: 89px;
+        border-bottom: 6px solid #323746;
+    }
+
+    main {
+        background-color: #f06c64;
+        height: 600px;
+        border-bottom: 6px solid #ea676b;
+        
+    }
+
+    section {
+        height: 495px;
+        background-color: #f2f2f2;
+        border-top: 6px solid #ffffff;
+
+    }
+
+    .content {
+        width: 1020px;
+        margin: auto auto;
+    }
+
+    .logo {
+        height: 100%;
+        width: max-content;
+        color: #ffffff;
+    }
+
+    header h1 span {
+        color: #f06c64;
+    }
