@@ -138,18 +138,38 @@
     .services__items-box {
         display: flex;
         flex-direction: row; 
-        justify-content: flex-start; 
+        justify-content: space-between;
         flex-wrap: wrap;
+        margin-top: 30px;
     }
 
     .services__item {
         display: flex;
         flex-direction: row; 
         justify-content: flex-start; 
-        width: 33%;
+        /* background-color: khaki; */
     }
 
     .services__item__icon {
-        width: 60px;
-        height: 60px;
+        width: 59px;
+        height: 59px;
+        margin-top: 15px;
+        margin-right: 20px;
+    }
+
+    .services__item__header {
+        font-size: 18px;
+        font-weight: 900;
+        margin-left: 1px;
+        margin-top: 14px;
+        margin-bottom: -3px;
+    }
+
+    .services__item__parahraph {
+        font-size: 12px;
+        line-height: 21px;
+        width: 220px;
+        text-align: justify;
+
+        
     }
