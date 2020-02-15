@@ -50,13 +50,13 @@
         color: #f06c64;
     }
  
-    .header__navigation__ul {
+    .header__ul {
         display: flex; 
         flex-direction: row; 
         justify-content: flex-start; 
     }
 
-    .header__navigation__li {
+    .header__li {
         margin-left: 14px;
         color: #494e62;
         font-weight: bold;
@@ -64,7 +64,7 @@
         list-style: none;
     }
 
-    .header__navigation__li:not(:first-child)::before {
+    .header__li:not(:first-child)::before {
         align-items:center;
         content: "";
         display: inline-block;
@@ -77,12 +77,12 @@
         letter-spacing: -0.9px;
     }
 
-    .header__navigation__a {
+    .header__a {
         text-decoration: none;
         color: #ffffff;
     }
     
-    .header__navigation__a:hover {
+    .header__a:hover {
         color: #f06c64;
     }
 
