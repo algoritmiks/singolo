@@ -99,7 +99,7 @@
        -webkit-transform: scaleX(-1);
     }
 
-    .slider-items__left-arrow:hover{
+    .arrow_hover {
         cursor: pointer;
     }
 
@@ -110,10 +110,6 @@
 
     .slider-items__right-arrow {
         margin-left: 1px;
-    }
-
-    .slider-items__right-arrow:hover{
-        cursor: pointer;
     }
 
     .services {
