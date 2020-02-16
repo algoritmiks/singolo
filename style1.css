@@ -50,13 +50,13 @@
         color: #f06c64;
     }
  
-    .header__ul {
+    .header__menu {
         display: flex; 
         flex-direction: row; 
         justify-content: flex-start; 
     }
 
-    .header__li {
+    .header__menu__item {
         margin-left: 14px;
         color: #494e62;
         font-weight: bold;
@@ -64,7 +64,7 @@
         list-style: none;
     }
 
-    .header__li:not(:first-child)::before {
+    .header__menu__item:not(:first-child)::before {
         align-items:center;
         content: "";
         display: inline-block;
@@ -77,12 +77,12 @@
         letter-spacing: -0.9px;
     }
 
-    .header__a {
+    .header__menu__link {
         text-decoration: none;
         color: #ffffff;
     }
     
-    .header__a:hover {
+    .header__menu__link:hover {
         color: #f06c64;
     }
 
@@ -117,13 +117,13 @@
         color: #666d89;
     }
 
-    .services__header {
+    .services__title {
         font-size: 30px;
         line-height: 18px;
         font-weight: 900;
     }
     
-    .services__paragraph {
+    .services__description {
         font-weight: 300;
         font-size: 18px;
         line-height: 30px;
@@ -161,7 +161,7 @@
         margin-bottom: -4px;
     }
 
-    .services__item__paragraph {
+    .services__item__description {
         font-size: 12px;
         line-height: 21px;
         width: 220px;
