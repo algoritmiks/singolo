@@ -117,6 +117,7 @@ body {
 
 .contacts__img {
     margin-right: 6px;
+    cursor: pointer;
 }
 
 .btn {
