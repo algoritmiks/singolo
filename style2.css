@@ -15,7 +15,7 @@ body {
     flex-direction: row; 
     justify-content: flex-start; 
     background-color: #2d303a;
-    padding-top: 47px;
+    padding-top: 57px;
     border-bottom: 6px solid #323746;
 }
 
@@ -52,26 +52,32 @@ body {
     flex-direction: row; 
     justify-content: space-between;
     flex-wrap: wrap;
+    padding-top: 19px;
+    padding-bottom: 47px;
 }
 
 .portfolio-image {
     width: 220px;
     height: 187px;
-    margin-top: 20px;
+    padding-bottom: 20px;
 }
 
 
 .title {
     font-size: 30px;
-    line-height: 18px;
+    line-height: 11px;
     font-weight: 900;
     line-height: 18px;
+    letter-spacing: 0.3px;
     color: #666d89;
 }
 
 .description {
     color: #767e9e;
     font-size: 18px;
+    line-height: 12px;
+    letter-spacing: -0.34px;
+    padding-top: 10px;
 }
 
 .person-name {
@@ -94,10 +100,10 @@ body {
     border-radius: 5px;
     cursor: pointer;
     background-color: transparent;
-    margin-right: 10px;
     line-height: 18px;
     font-size: 12px;
-    /* transition: 0.27s ease-out; */
+    margin-right: 7px;
+    font-weight: 530;
 }
 
 .btn:hover {
