@@ -1,0 +1,89 @@
+@import './assets/fonts/fonts.css' screen;
+    
+body {
+    margin: 0;
+    font-family: Lato, sans-serif;
+}
+
+.wrapper {
+    width: 940px;
+    margin: 0 auto;
+}
+
+.portfolio {
+    display: flex;
+    flex-direction: row; 
+    justify-content: flex-start; 
+    background-color: #2d303a;
+    padding-top: 47px;
+    border-bottom: 6px solid #323746;
+}
+
+.about {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    background-color: #f2f2f2;
+    border-bottom: 6px solid #ffffff;
+}
+
+.persons {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between; 
+}
+
+.person {
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start; 
+    width: 300px;
+}
+
+.person-image {
+    width: 300px;
+    height: 300px;
+}
+
+.portfolio-items {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.portfolio-image {
+    width: 220px;
+    height: 187px;
+    margin-top: 20px;
+}
+
+
+.title {
+    font-size: 30px;
+    line-height: 18px;
+    font-weight: 900;
+    line-height: 18px;
+    color: #666d89;
+}
+
+.description {
+    color: #767e9e;
+    font-size: 18px;
+}
+
+.person-name {
+    font-size: 18px;
+    line-height: 18px;
+    color: #666d89;
+}
+
+.person-description {
+    color: #767e9e;
+}
+
+.contacts {
+    color: #666d89;
+}
