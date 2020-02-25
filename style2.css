@@ -64,6 +64,9 @@ body {
     padding-bottom: 20px;
 }
 
+.portfolio-image:nth-child(n+13) {
+    display: none;
+}
 
 .title {
     font-size: 30px;
