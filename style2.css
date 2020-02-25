@@ -87,3 +87,20 @@ body {
 .contacts {
     color: #666d89;
 }
+
+.btn {
+    color: #767e9e;
+    border: 1px solid #666d89;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: transparent;
+    margin-right: 10px;
+    line-height: 18px;
+    font-size: 12px;
+    /* transition: 0.27s ease-out; */
+}
+
+.btn:hover {
+    border: 1px solid #c5c5c5;
+    color: #dedede;
+}
