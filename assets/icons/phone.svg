@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 11" width="11" height="11">
+	<defs>
+		<image width="80" height="80" id="img1" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MCA4MCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIj4KCTxkZWZzPgoJCTxjbGlwUGF0aCBjbGlwUGF0aFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgaWQ9ImNwMSI+CgkJCTxwYXRoIGQ9Ik0wIDBMODAgMEw4MCA4MEwwIDgwWiIgLz4KCQk8L2NsaXBQYXRoPgoJPC9kZWZzPgoJPHN0eWxlPgoJCXRzcGFuIHsgd2hpdGUtc3BhY2U6cHJlIH0KCQkuc2hwMCB7IGZpbGw6ICMwMDAwMDAgfSAKCTwvc3R5bGU+Cgk8ZyBpZD0iUGFnZSAxIiBjbGlwLXBhdGg9InVybCgjY3AxKSI+CgkJPHBhdGggaWQ9IlBhdGggMSIgY2xhc3M9InNocDAiIGQ9Ik00Ni4xNCA0Ni4xNEMzOC4yMyA1NC4wNiAyOS4wNiA2MS42MyAyNS40MyA1OEMyMC4yNSA1Mi44MSAxNy4wNSA0OC4zIDUuNjEgNTcuNDlDLTUuODMgNjYuNjggMi45NiA3Mi44MSA3Ljk4IDc3Ljg0QzEzLjc4IDgzLjY0IDM1LjQgNzguMTQgNTYuNzcgNTYuNzhDNzguMTQgMzUuNCA4My42NCAxMy43OCA3Ny44NCA3Ljk4QzcyLjgxIDIuOTUgNjYuNjggLTUuODMgNTcuNDkgNS42MUM0OC4zIDE3LjA0IDUyLjgxIDIwLjI1IDU4IDI1LjQzQzYxLjYzIDI5LjA2IDU0LjA2IDM4LjIyIDQ2LjE0IDQ2LjE0WiIgLz4KCTwvZz4KPC9zdmc+"/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<g id="Get a Quote">
+		<g id="Contact Information">
+			<use id="phone" href="#img1" transform="matrix(0.137,0,0,0.138,0,0)"/>
+		</g>
+	</g>
+</svg>

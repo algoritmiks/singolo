@@ -14,9 +14,11 @@ body {
 
 .contacts {
     display: flex;
-    justify-content: start;
     color: #666d89;
-    margin-top: 10px;
+}
+
+.contacts:last-child {
+    margin-right: -6px;
 }
 
 .contacts__img {
@@ -28,8 +30,15 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 21px;
+    padding-bottom: 20px;
+    color: #666d89;
+    font-size: 12px;
 }
 
+footer {
+    background-color: #2d303a;
+}
 .title {
     font-size: 30px;
     line-height: 11px;
@@ -72,19 +81,33 @@ body {
 
 .contact-information {
     flex-basis: 32%;
+    color: #f0d8d9;
+}
+
+.contact-information__header {
+    margin-block-start: -1px;
+    letter-spacing: -0.05px;
+    margin-block-end: -2px;
+}
+
+.contact-information__description {
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 22px;
+    text-align: justify;
 }
 
 .input {
     font-size: 12px;
     font-weight: 400;
     line-height: 35px;
-    /* height: 36px; */
     border-radius: 5px;
     border: none;
     background-color: #d6564f;
     margin-bottom: 17px;
     padding-left: 15px;
     color: #f0d8d9;
+    cursor: pointer;
 }
 
 .input::placeholder {
