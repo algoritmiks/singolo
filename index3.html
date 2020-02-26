@@ -21,12 +21,11 @@
                 
 
             <div class="quote-wrapper">
-                <form class="form" action="#" method="post">
+                <form class="form" id="form" action="" method="post">
                     <input class="input" type="text" name="name" placeholder="Name (Required)" required="">
                     <input class="input" type="email" name="email" placeholder="Email (Required)" required="">
                     <input class="input" type="text" name="subj" placeholder="Subject">
                     <textarea class="input" name="msg" placeholder="Describe your project in detail..."></textarea>
-                    <!-- <button type="submit">Apply</button> -->
                 </form>
             
                 <div class="contact-information">
@@ -37,7 +36,8 @@
                     </p>
                     <span>Elm St. 14/05 Lost City</span>
                     <a href="tel:035283318635">03528 331 86 35</a>
-                    <a href="mailto:info@singolo.com">info@singolo.com</a>
+                    <a href="mailto:info@singolo.com">info@singolo.com</a> <br>
+                    <button class="btn-submit" form="form" type="submit" name="send_other">Apply</button>
                 </div>
             </div>
         </div>

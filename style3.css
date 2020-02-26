@@ -117,3 +117,15 @@ footer {
 .input:last-child {
     height: 198px;
 }
+
+.btn-submit {
+    height: 30px;
+    width: 100px;
+    font-size: 12px;
+    border-radius: 5px;
+    border: none;
+    background-color: #d6564f;
+    cursor: pointer;
+    color: #f0d8d9;
+    margin-top: 160px;
+}
