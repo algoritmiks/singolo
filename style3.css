@@ -94,7 +94,9 @@ footer {
     margin-top: 8px;
     font-size: 12px;
     line-height: 22px;
+    letter-spacing: -0.1px;
     text-align: justify;
+    hyphens: manual;
 }
 
 .input {
@@ -127,5 +129,29 @@ footer {
     background-color: #d6564f;
     cursor: pointer;
     color: #f0d8d9;
-    margin-top: 160px;
+    margin-top: 100px;
+}
+
+.addr, .phone, .email {
+    display: block;
+    margin-bottom: -12px;
+    font-size: 12px;
+    text-decoration: none;
+    color: #f0d8d9;
+}
+
+.email {
+    margin-left: -2px;
+}
+
+.phone {
+    margin-left: -1px;
+}
+.contact-information__img {
+    margin-right: 10px;
+}
+
+.contact-information-box {
+    margin-top: 55px;
+    margin-left: 4px;
 }
