@@ -168,6 +168,8 @@
         line-height: 21px;
         width: 220px;
         text-align: justify;
+        overflow: hidden;
+        max-height: 63px;
     }
 
 
