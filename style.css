@@ -262,6 +262,9 @@
         margin-top: 19px;
         letter-spacing: -0.55px;
         color: #666d89;
+        white-space: nowrap;
+        overflow: hidden;
+
     }
     
     .person-description {
@@ -443,3 +446,4 @@
         margin-top: 25px;
         margin-left: 4px;
     }
+
