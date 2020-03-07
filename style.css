@@ -287,8 +287,14 @@
     .contacts__img {
         margin-right: 6px;
         cursor: pointer;
+        transition: .6s ease-out;
     }
     
+    .contacts__img:hover {
+        transform: scale(1.1);
+        transform: rotate(360deg);
+    }
+
     .btn {
         color: #767e9e;
         border: 1px solid #666d89;
@@ -450,3 +456,4 @@
         margin-left: 4px;
     }
 
+    
