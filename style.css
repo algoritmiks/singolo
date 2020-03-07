@@ -412,6 +412,7 @@
     
     .input-txt {
         height: 198px;
+        resize: none;
     }
     
     .btn-submit {
