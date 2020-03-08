@@ -265,6 +265,7 @@
         letter-spacing: -0.55px;
         color: #666d89;
         white-space: nowrap;
+        text-overflow: ellipsis;
         overflow: hidden;
 
     }
