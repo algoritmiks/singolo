@@ -88,6 +88,10 @@
         color: #f06c64;
     }
 
+    .header-menu__active {
+        color: #f06c64;
+    }
+
     .slider-items {
         display: flex;
         flex-direction: row; 
@@ -309,6 +313,11 @@
     }
     
     .btn:hover {
+        border: 1px solid #c5c5c5;
+        color: #dedede;
+    }
+
+    .btn__active {
         border: 1px solid #c5c5c5;
         color: #dedede;
     }
