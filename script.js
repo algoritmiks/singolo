@@ -1,63 +1,52 @@
-const headerMenu = document.querySelector(".header-menu");
-const leftPhoneSwitcher = document.querySelector(".left-phone-switcher");
-const rightPhoneSwitcher = document.querySelector(".right-phone-switcher");
-const leftPhoneBlackScreen = document.querySelector(".left-phone-black-screen");
-const rightPhoneBlackScreen = document.querySelector(".right-phone-black-screen");
-const slides = document.querySelectorAll(".slider-image");
-const leftArrow = document.querySelector(".slider-items__left-arrow");
-const rightArrow = document.querySelector(".slider-items__right-arrow");
-const portfolioMenuButtons = document.querySelector(".buttons");
-const porfolioItems = document.querySelector(".portfolio-items");
-const porfolioImage = document.querySelectorAll(".portfolio-image");
-const LEFT = "LEFT";
-const RIGHT = "RIGHT";
-const submitButton = document.querySelector(".btn-submit");
-const closePopupButton = document.querySelector(".popup_btn");
-const popupWindow = document.querySelector(".popup");
-const email = document.forms["form"].email;
-const name = document.forms["form"].name;
-const subj = document.forms["form"].subj;
-const message = document.forms["form"].msg;
-let leftPhoneDisabled = false;
-let rightPhoneDisabled = false;
-let currentSlide = 0;
-let nextSlide = 0;
-let portfolioImagesSrc = [];
+const $ = c => document.querySelector(c), $All = c => document.querySelectorAll(c),
+    LEFT = "LEFT", RIGHT = "RIGHT";
+let leftPhoneDisabled = false, rightPhoneDisabled = false, 
+    currentSlide = 0, nextSlide = 0, portfolioImagesSrc = [];
 
-porfolioImage.forEach(e => portfolioImagesSrc.push(e.src));
+$All(".portfolio-image").forEach(e => portfolioImagesSrc.push(e.src));
+$All(".slider-image").forEach( (_, i) => i==0 ? $All(".slider-image")[i].style.left="0%" : $All(".slider-image")[i].style.display="none" );
 
-closePopupButton.addEventListener('click', e => popupWindow.style.display="none");
-
-submitButton.addEventListener('click', (e) => {
-    if (email.checkValidity() && name.checkValidity()) {
-        e.preventDefault();
-        name.value="";
-        email.value="";
-        subj.value !== "" 
-            ? document.querySelector(".popup__theme").textContent = `Тема: ${subj.value}` 
-            : document.querySelector(".popup__theme").textContent = "Без темы"
-        subj.value = "";
-        message.value !==""
-            ? document.querySelector(".popup__description").textContent = `Описание: ${message.value}` 
-            : document.querySelector(".popup__description").textContent = "Без описания"
-        message.value = "";
-        popupWindow.style.display="block";
-
+const moveSlides = (direction) => {
+    switch (direction) {
+        case RIGHT:
+            nextSlide += 1;
+            nextSlide > $All(".slider-image").length-1 ? nextSlide = 0 : null;
+            $All(".slider-image")[nextSlide].style.left = "100%";
+            break;
+        case LEFT:
+            nextSlide -= 1;
+            nextSlide < 0 ? nextSlide = $All(".slider-image").length-1 : null;
+            $All(".slider-image")[nextSlide].style.left = "-100%";
+            break;
+        default:
+            break;
     }
-});
+    $All(".slider-image")[nextSlide].style.display = "block";
+    $(".slider-items__right-arrow").style.display = "none";
+    $(".slider-items__left-arrow").style.display = "none";
+    setTimeout( () => {
+        $All(".slider-image")[nextSlide].style.left = "0%";
+        direction == RIGHT 
+            ? $All(".slider-image")[currentSlide].style.left = "-100%" 
+            : $All(".slider-image")[currentSlide].style.left = "100%";
+        (direction == RIGHT && currentSlide == 0) || (direction == LEFT && currentSlide == 2)
+            ? $('.slider').classList.add('slider-blue')
+            : $('.slider').classList.remove('slider-blue');
+    }, 30);
+    setTimeout( () => {
+        $All(".slider-image")[currentSlide].style.display = "none";
+        currentSlide = nextSlide;
+        $(".slider-items__right-arrow").style.display = "block";
+        $(".slider-items__left-arrow").style.display = "block";
+    }, 1000);
+}
 
-porfolioItems.addEventListener('click', (e) => {
-    if (e.target.tagName == "DIV") return;
-    porfolioItems.querySelectorAll(".portfolio-image").forEach(el=>{
-        e.target == el 
-            ? (el.classList.contains("portfolio-image-active") 
-                ? el.classList.remove("portfolio-image-active") 
-                : el.classList.add("portfolio-image-active") )
-            : el.classList.contains("portfolio-image-active") 
-                ? el.classList.remove("portfolio-image-active") 
-                : null
-    });
-});
+const switchPhone = (phone) => {
+    phone == LEFT ? leftPhoneDisabled = !leftPhoneDisabled : rightPhoneDisabled = !rightPhoneDisabled;
+    phone == LEFT 
+        ? (leftPhoneDisabled ? $(".left-phone-black-screen").style.display = "block" : $(".left-phone-black-screen").style.display = "none")
+        : (rightPhoneDisabled ? $(".right-phone-black-screen").style.display = "block" : $(".right-phone-black-screen").style.display = "none") 
+}
 
 const shuffle = (arr) => {
     arr.sort(() => Math.random() - 0.5);
@@ -65,16 +54,16 @@ const shuffle = (arr) => {
 
 const replacePortfolioImages = () => {
     shuffle(portfolioImagesSrc);
-    for (let i=0; i<porfolioImage.length; i++) {
-        porfolioImage[i].src = portfolioImagesSrc[i];
+    for (let i=0; i<portfolioImagesSrc.length; i++) {
+        $All(".portfolio-image")[i].src = portfolioImagesSrc[i];
     }
-    porfolioItems.querySelectorAll(".portfolio-image").forEach(el=>{
+    $(".portfolio-items").querySelectorAll(".portfolio-image").forEach(el=>{
         el.classList.remove("portfolio-image-active");});
 }
 
-portfolioMenuButtons.addEventListener('click', (e) => {
+$(".buttons").addEventListener('click', (e) => {
     if (e.target.tagName == "DIV") return;
-    portfolioMenuButtons.querySelectorAll('.btn').forEach(el => {
+    $(".buttons").querySelectorAll('.btn').forEach(el => {
         if ( e.target !== el ) {
             el.classList.remove("btn__active");
         } 
@@ -85,60 +74,47 @@ portfolioMenuButtons.addEventListener('click', (e) => {
     })
 });
 
-headerMenu.addEventListener('click', (e) => {
+$(".header-menu").addEventListener('click', (e) => {
     if (e.target.tagName !== "A") return;
-    headerMenu.querySelectorAll('a').forEach(el => {
+    $(".header-menu").querySelectorAll('a').forEach(el => {
         el.classList.remove("header-menu_active");
         e.target.classList.add("header-menu_active");
     })
 });
 
-slides.forEach(( _, i) => {
-    i == 0 ? slides[i].style.left = "0%" : slides[i].style.display = "none";
+$(".btn-submit").addEventListener('click', (e) => {
+    if (document.forms["form"].email.checkValidity() && document.forms["form"].name.checkValidity()) {
+        e.preventDefault();
+        document.forms["form"].name.value="";
+        document.forms["form"].email.value="";
+        document.forms["form"].subj.value !== "" 
+            ? $(".popup__theme").textContent = `Тема: ${document.forms["form"].subj.value}` 
+            : $(".popup__theme").textContent = "Без темы";
+        document.forms["form"].subj.value = "";
+        document.forms["form"].msg.value !==""
+            ? $(".popup__description").textContent = `Описание: ${document.forms["form"].msg.value}` 
+            : $(".popup__description").textContent = "Без описания";
+        document.forms["form"].msg.value = "";
+        $(".popup").style.display="block";
+
+    }
 });
 
-const moveSlides = (direction) => {
-    switch (direction) {
-        case RIGHT:
-            nextSlide += 1;
-            nextSlide > slides.length-1 ? nextSlide = 0 : null;
-            slides[nextSlide].style.left = "100%";
-            break;
-        case LEFT:
-            nextSlide -= 1;
-            nextSlide < 0 ? nextSlide = slides.length-1 : null;
-            slides[nextSlide].style.left = "-100%";
-            break;
-        default:
-            break;
-    }
-    slides[nextSlide].style.display = "block";
-    rightArrow.style.display = "none";
-    leftArrow.style.display = "none";
-    setTimeout( () => {
-        slides[nextSlide].style.left = "0%";
-        direction == RIGHT ? slides[currentSlide].style.left = "-100%" : slides[currentSlide].style.left = "100%";
-        (direction == RIGHT && currentSlide == 0) || (direction == LEFT && currentSlide == 2)
-            ? document.querySelector('.slider').classList.add('slider-blue')
-            : document.querySelector('.slider').classList.remove('slider-blue');
-    }, 30);
-    setTimeout(() => {
-        slides[currentSlide].style.display = "none";
-        currentSlide = nextSlide;
-        rightArrow.style.display = "block";
-        leftArrow.style.display = "block";
-    }, 1000);
-}
+$(".portfolio-items").addEventListener('click', (e) => {
+    if (e.target.tagName == "DIV") return;
+    $(".portfolio-items").querySelectorAll(".portfolio-image").forEach(el=>{
+        e.target == el 
+            ? (el.classList.contains("portfolio-image-active") 
+                ? el.classList.remove("portfolio-image-active") 
+                : el.classList.add("portfolio-image-active") )
+            : el.classList.contains("portfolio-image-active") 
+                ? el.classList.remove("portfolio-image-active") 
+                : null;
+    });
+});
 
-rightArrow.addEventListener( 'click', () => moveSlides(RIGHT) );
-leftArrow.addEventListener( 'click', () => moveSlides(LEFT) );
-
-const switchPhone = (phone) => {
-    phone == LEFT ? leftPhoneDisabled = !leftPhoneDisabled : rightPhoneDisabled = !rightPhoneDisabled;
-    phone == LEFT 
-        ? (leftPhoneDisabled ? leftPhoneBlackScreen.style.display = "block" : leftPhoneBlackScreen.style.display = "none")
-        : (rightPhoneDisabled ? rightPhoneBlackScreen.style.display = "block" : rightPhoneBlackScreen.style.display = "none") 
-}
-
-leftPhoneSwitcher.addEventListener( 'click', () => switchPhone(LEFT) );
-rightPhoneSwitcher.addEventListener( 'click', () => switchPhone(RIGHT) );
+$(".left-phone-switcher").addEventListener( 'click', () => switchPhone(LEFT) );
+$(".right-phone-switcher").addEventListener( 'click', () => switchPhone(RIGHT) );
+$(".slider-items__right-arrow").addEventListener( 'click', () => moveSlides(RIGHT) );
+$(".slider-items__left-arrow").addEventListener( 'click', () => moveSlides(LEFT) );
+$(".popup_btn").addEventListener('click', e => $(".popup").style.display="none");
