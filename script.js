@@ -26,7 +26,6 @@ let portfolioImagesSrc = [];
 
 porfolioImage.forEach(e => portfolioImagesSrc.push(e.src));
 
-
 closePopupButton.addEventListener('click', e => popupWindow.style.display="none");
 
 submitButton.addEventListener('click', (e) => {
@@ -60,7 +59,6 @@ porfolioItems.addEventListener('click', (e) => {
     });
 });
 
-
 const shuffle = (arr) => {
     arr.sort(() => Math.random() - 0.5);
 };
@@ -87,15 +85,12 @@ portfolioMenuButtons.addEventListener('click', (e) => {
     })
 });
 
-headerMenu.addEventListener('click', (event) => {
+headerMenu.addEventListener('click', (e) => {
+    if (e.target.tagName !== "A") return;
     headerMenu.querySelectorAll('a').forEach(el => {
-        if (event.target.tagName == "A") {
-            el.classList.remove("header-menu_active");
-        }
-    });
-    if (event.target.tagName == "A") {
-        event.target.classList.add("header-menu_active");
-    }
+        el.classList.remove("header-menu_active");
+        e.target.classList.add("header-menu_active");
+    })
 });
 
 slides.forEach((el, i) => {
@@ -144,5 +139,6 @@ const switchPhone = (phone) => {
         ? (leftPhoneDisabled ? leftPhoneBlackScreen.style.display = "block" : leftPhoneBlackScreen.style.display = "none")
         : (rightPhoneDisabled ? rightPhoneBlackScreen.style.display = "block" : rightPhoneBlackScreen.style.display = "none") 
 }
+
 leftPhoneSwitcher.addEventListener( 'click', () => switchPhone(LEFT) );
 rightPhoneSwitcher.addEventListener( 'click', () => switchPhone(RIGHT) );
