@@ -93,7 +93,7 @@ headerMenu.addEventListener('click', (e) => {
     })
 });
 
-slides.forEach((el, i) => {
+slides.forEach(( _, i) => {
     i == 0 ? slides[i].style.left = "0%" : slides[i].style.display = "none";
 });
 
@@ -121,7 +121,7 @@ const moveSlides = (direction) => {
         (direction == RIGHT && currentSlide == 0) || (direction == LEFT && currentSlide == 2)
             ? document.querySelector('.slider').classList.add('slider-blue')
             : document.querySelector('.slider').classList.remove('slider-blue');
-    }, 1);
+    }, 30);
     setTimeout(() => {
         slides[currentSlide].style.display = "none";
         currentSlide = nextSlide;
