@@ -11,6 +11,13 @@ const porfolioItems = document.querySelector(".portfolio-items");
 const porfolioImage = document.querySelectorAll(".portfolio-image");
 const LEFT = "LEFT";
 const RIGHT = "RIGHT";
+const submitButton = document.querySelector(".btn-submit");
+const closePopupButton = document.querySelector(".popup_btn");
+const popupWindow = document.querySelector(".popup");
+const email = document.forms["form"].email;
+const name = document.forms["form"].name;
+const subj = document.forms["form"].subj;
+const message = document.forms["form"].msg;
 let leftPhoneDisabled = false;
 let rightPhoneDisabled = false;
 let currentSlide = 0;
@@ -18,6 +25,27 @@ let nextSlide = 0;
 let portfolioImagesSrc = [];
 
 porfolioImage.forEach(e => portfolioImagesSrc.push(e.src));
+
+
+closePopupButton.addEventListener('click', e => popupWindow.style.display="none");
+
+submitButton.addEventListener('click', (e) => {
+    if (email.checkValidity() && name.checkValidity()) {
+        e.preventDefault();
+        name.value="";
+        email.value="";
+        subj.value !== "" 
+            ? document.querySelector(".popup__theme").textContent = `Тема: ${subj.value}` 
+            : document.querySelector(".popup__theme").textContent = "Без темы"
+        subj.value = "";
+        message.value !==""
+            ? document.querySelector(".popup__description").textContent = `Описание: ${message.value}` 
+            : document.querySelector(".popup__description").textContent = "Без описания"
+        message.value = "";
+        popupWindow.style.display="block";
+
+    }
+});
 
 porfolioItems.addEventListener('click', (e) => {
     if (e.target.tagName == "DIV") return;
@@ -118,14 +146,3 @@ const switchPhone = (phone) => {
 }
 leftPhoneSwitcher.addEventListener( 'click', () => switchPhone(LEFT) );
 rightPhoneSwitcher.addEventListener( 'click', () => switchPhone(RIGHT) );
-
-
-document.querySelector('.form__submit').addEventListener('click', (evt) => {
-    evt.preventDefault();
-    let subject = document.querySelector('#subject').value;
-    subject = subject === '' ? 'Без темы' : 'Тема: ' + subject;
-    let description = document.querySelector('#description').value;
-    description = description === '' ? 'Без описания' : 'Описание: ' + description;
-    let message = 'Письмо отправлено \n'+subject+'\n'+description;
-    alert(message);
-  })

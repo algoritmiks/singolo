@@ -245,8 +245,15 @@
                         <input class="input" type="text" name="subj" placeholder="Subject">
                         <textarea class="input input-txt" name="msg"
                             placeholder="Describe your project in detail..."></textarea>
-                        <button class="btn-submit" type="submit" name="send_other">Submit</button>
+                        <button class="btn-submit" type="submit" >Submit</button>
                     </form>
+
+                    <div class="popup" style="display: none">
+                        <span>Письмо отправлено</span> <br>
+                        <span class="popup__theme"> Тема: </span> <br>
+                        <span class="popup__description">Описание: </span> <br>
+                        <button class="popup_btn">OK</button>
+                    </div>
 
                     <div class="contact-information" id="contact">
                         <h3 class="contact-information__header">Contact Information</h3>

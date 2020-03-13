@@ -522,7 +522,18 @@
         cursor: pointer;
         color: #f0d8d9;
     }
-    
+
+    .popup {
+        border: 3px solid rgb(58, 58, 58);
+        border-radius: 4px;
+        position: fixed;
+        background-color: rgb(202, 202, 202);
+        left: 50%;
+        top: 50%;
+        padding: 20px;
+        z-index: 99;
+    }
+  
     .addr, .phone, .email {
         display: block;
         margin-bottom: -12px;
