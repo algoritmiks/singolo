@@ -96,7 +96,7 @@ $(".btn-submit").addEventListener('click', (e) => {
             : $(".popup__description").textContent = "Без описания";
         document.forms["form"].msg.value = "";
         $(".popup").style.display="block";
-
+        $("body").style.overflow="hidden";
     }
 });
 
@@ -117,4 +117,7 @@ $(".left-phone-switcher").addEventListener( 'click', () => switchPhone(LEFT) );
 $(".right-phone-switcher").addEventListener( 'click', () => switchPhone(RIGHT) );
 $(".slider-items__right-arrow").addEventListener( 'click', () => moveSlides(RIGHT) );
 $(".slider-items__left-arrow").addEventListener( 'click', () => moveSlides(LEFT) );
-$(".popup_btn").addEventListener('click', e => $(".popup").style.display="none");
+$(".popup_btn").addEventListener('click', e => { 
+    $(".popup").style.display="none"; 
+    $("body").style.overflow="visible" 
+});
