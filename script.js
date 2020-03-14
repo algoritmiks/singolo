@@ -49,13 +49,9 @@ const switchPhone = (phone) => {
         : (rightPhoneDisabled ? $(".right-phone-black-screen").style.display = "block" : $(".right-phone-black-screen").style.display = "none") 
 }
 
-const shuffle = (arr) => {
-    arr.sort(() => Math.random() - 0.5);
-};
-
 const replacePortfolioImages = () => {
-    shuffle(portfolioImagesSrc);
-    for (let i=0; i<portfolioImagesSrc.length; i++) {
+    portfolioImagesSrc.sort( () => Math.random() - 0.5 );
+    for ( let i=0; i<portfolioImagesSrc.length; i++ ) {
         $All(".portfolio-image")[i].src = portfolioImagesSrc[i];
     }
     $(".portfolio-items").querySelectorAll(".portfolio-image").forEach(el=>{
@@ -76,7 +72,7 @@ $(".buttons").addEventListener('click', (e) => {
 });
 
 $(".header-menu").addEventListener('click', (e) => {
-    if (e.target.tagName !== "A") return;
+    if ( e.target.tagName !== "A" ) return;
     $(".header-menu").querySelectorAll('a').forEach(el => {
         el.classList.remove("header-menu_active");
         e.target.classList.add("header-menu_active");
