@@ -1,7 +1,8 @@
-const $ = c => document.querySelector(c), $All = c => document.querySelectorAll(c),
-    LEFT = "LEFT", RIGHT = "RIGHT";
-let leftPhoneDisabled = false, rightPhoneDisabled = false, 
-    currentSlide = 0, nextSlide = 0, portfolioImagesSrc = [];
+const $ = c => document.querySelector(c); 
+const $All = c => document.querySelectorAll(c);
+const LEFT = "LEFT", RIGHT = "RIGHT";
+let leftPhoneDisabled = false, rightPhoneDisabled = false; 
+let currentSlide = 0, nextSlide = 0, portfolioImagesSrc = [];
 
 $All(".portfolio-image").forEach(e => portfolioImagesSrc.push(e.src));
 $All(".slider-image").forEach( (_, i) => i==0 ? $All(".slider-image")[i].style.left="0%" : $All(".slider-image")[i].style.display="none" );
@@ -105,11 +106,9 @@ $(".portfolio-items").addEventListener('click', (e) => {
     $(".portfolio-items").querySelectorAll(".portfolio-image").forEach(el=>{
         e.target == el 
             ? (el.classList.contains("portfolio-image-active") 
-                ? el.classList.remove("portfolio-image-active") 
-                : el.classList.add("portfolio-image-active") )
+                ? el.classList.remove("portfolio-image-active") : el.classList.add("portfolio-image-active"))
             : el.classList.contains("portfolio-image-active") 
-                ? el.classList.remove("portfolio-image-active") 
-                : null;
+                ? el.classList.remove("portfolio-image-active") : null;
     });
 });
 
@@ -119,5 +118,5 @@ $(".slider-items__right-arrow").addEventListener( 'click', () => moveSlides(RIGH
 $(".slider-items__left-arrow").addEventListener( 'click', () => moveSlides(LEFT) );
 $(".popup_btn").addEventListener('click', e => { 
     $(".popup").style.display="none"; 
-    $("body").style.overflow="visible" 
+    $("body").style.overflow="visible"; 
 });
