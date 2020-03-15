@@ -1,11 +1,11 @@
-const $ = c => document.querySelector(c); 
+const $ = c => document.querySelector(c);
 const $All = c => document.querySelectorAll(c);
 const LEFT = "LEFT", RIGHT = "RIGHT";
-let leftPhoneDisabled = false, rightPhoneDisabled = false; 
+let isLeftPhoneDisabled = false, isRightPhoneDisabled = false;
 let currentSlide = 0, nextSlide = 0, portfolioImagesSrc = [];
 
 $All(".portfolio-image").forEach(e => portfolioImagesSrc.push(e.src));
-$All(".slider-image").forEach( (_, i) => i==0 ? $All(".slider-image")[i].style.left="0%" : $All(".slider-image")[i].style.display="none" );
+$All(".slider-image").forEach( (el, i) => i==0 ? $All(".slider-image")[i].style.left="0%" : $All(".slider-image")[i].style.display="none" );
 
 const moveSlides = (direction) => {
     switch (direction) {
@@ -27,10 +27,10 @@ const moveSlides = (direction) => {
     $(".slider-items__left-arrow").style.display = "none";
     setTimeout( () => {
         $All(".slider-image")[nextSlide].style.left = "0%";
-        direction == RIGHT 
-            ? $All(".slider-image")[currentSlide].style.left = "-100%" 
+        direction === RIGHT
+            ? $All(".slider-image")[currentSlide].style.left = "-100%"
             : $All(".slider-image")[currentSlide].style.left = "100%";
-        (direction == RIGHT && currentSlide == 0) || (direction == LEFT && currentSlide == 2)
+        (direction === RIGHT && currentSlide == 0) || (direction === LEFT && currentSlide == 2)
             ? $('.slider').classList.add('slider-blue')
             : $('.slider').classList.remove('slider-blue');
     }, 30);
@@ -43,10 +43,10 @@ const moveSlides = (direction) => {
 }
 
 const switchPhone = (phone) => {
-    phone == LEFT ? leftPhoneDisabled = !leftPhoneDisabled : rightPhoneDisabled = !rightPhoneDisabled;
-    phone == LEFT 
-        ? (leftPhoneDisabled ? $(".left-phone-black-screen").style.display = "block" : $(".left-phone-black-screen").style.display = "none")
-        : (rightPhoneDisabled ? $(".right-phone-black-screen").style.display = "block" : $(".right-phone-black-screen").style.display = "none") 
+    phone === LEFT ? isLeftPhoneDisabled = !isLeftPhoneDisabled : isRightPhoneDisabled = !isRightPhoneDisabled;
+    phone === LEFT
+        ? (isLeftPhoneDisabled ? $(".left-phone-black-screen").style.display = "block" : $(".left-phone-black-screen").style.display = "none")
+        : (isRightPhoneDisabled ? $(".right-phone-black-screen").style.display = "block" : $(".right-phone-black-screen").style.display = "none")
 }
 
 const replacePortfolioImages = () => {
@@ -59,11 +59,11 @@ const replacePortfolioImages = () => {
 }
 
 $(".buttons").addEventListener('click', (e) => {
-    if (e.target.tagName == "DIV") return;
+    if (e.target.tagName === "DIV") return;
     $(".buttons").querySelectorAll('.btn').forEach(el => {
         if ( e.target !== el ) {
             el.classList.remove("btn__active");
-        } 
+        }
         if ( e.target == el && !el.classList.contains("btn__active") ) {
             e.target.classList.add("btn__active");
             replacePortfolioImages();
@@ -84,12 +84,12 @@ $(".btn-submit").addEventListener('click', (e) => {
         e.preventDefault();
         document.forms["form"].name.value="";
         document.forms["form"].email.value="";
-        document.forms["form"].subj.value !== "" 
-            ? $(".popup__theme").textContent = `Тема: ${document.forms["form"].subj.value}` 
+        document.forms["form"].subj.value !== ""
+            ? $(".popup__theme").textContent = `Тема: ${document.forms["form"].subj.value}`
             : $(".popup__theme").textContent = "Без темы";
         document.forms["form"].subj.value = "";
         document.forms["form"].msg.value !==""
-            ? $(".popup__description").textContent = `Описание: ${document.forms["form"].msg.value}` 
+            ? $(".popup__description").textContent = `Описание: ${document.forms["form"].msg.value}`
             : $(".popup__description").textContent = "Без описания";
         document.forms["form"].msg.value = "";
         $(".popup").style.display="block";
@@ -98,12 +98,12 @@ $(".btn-submit").addEventListener('click', (e) => {
 });
 
 $(".portfolio-items").addEventListener('click', (e) => {
-    if (e.target.tagName == "DIV") return;
+    if (e.target.tagName === "DIV") return;
     $(".portfolio-items").querySelectorAll(".portfolio-image").forEach(el=>{
-        e.target == el 
-            ? (el.classList.contains("portfolio-image-active") 
+        e.target === el
+            ? (el.classList.contains("portfolio-image-active")
                 ? el.classList.remove("portfolio-image-active") : el.classList.add("portfolio-image-active"))
-            : el.classList.contains("portfolio-image-active") 
+            : el.classList.contains("portfolio-image-active")
                 ? el.classList.remove("portfolio-image-active") : null;
     });
 });
@@ -112,7 +112,7 @@ $(".left-phone-switcher").addEventListener( 'click', () => switchPhone(LEFT) );
 $(".right-phone-switcher").addEventListener( 'click', () => switchPhone(RIGHT) );
 $(".slider-items__right-arrow").addEventListener( 'click', () => moveSlides(RIGHT) );
 $(".slider-items__left-arrow").addEventListener( 'click', () => moveSlides(LEFT) );
-$(".popup_btn").addEventListener('click', e => { 
-    $(".popup").style.display="none"; 
-    $("body").style.overflow="visible"; 
+$(".popup_btn").addEventListener('click', e => {
+    $(".popup").style.display="none";
+    $("body").style.overflow="visible";
 });
