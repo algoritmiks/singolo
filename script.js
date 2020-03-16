@@ -128,7 +128,7 @@ const formSubmit = (e) => {
             ? $(".popup__description").textContent = `Описание: ${document.forms["form"].msg.value}`
             : $(".popup__description").textContent = "Без описания";
         document.forms["form"].msg.value = "";
-        $(".popup").style.display="block";
+        $(".popup").classList.remove("hidden");
         $("body").style.overflow="hidden";
     }
 }
@@ -154,6 +154,6 @@ $(".portfolio-items").addEventListener('click', (e) => {
 
 //закрытие модального окна
 $(".popup_btn").addEventListener('click', e => {
-    $(".popup").style.display="none";
+    $(".popup").classList.add("hidden");
     $("body").style.overflow="visible";
 });
