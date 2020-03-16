@@ -136,7 +136,6 @@
         padding-left: 80px;
         padding-right: 80px;
         padding-top: 53px;
-        
     }
 
     .arrow_hover {
@@ -170,7 +169,6 @@
         background-color: black;
         top: 118px;
         left: 94px;
-        display: none;
         transition: all ease 1s;
     }
 
@@ -181,8 +179,11 @@
         background-color: black;
         top: 189px;
         left:436px;
-        display: none;
         transition: all ease 1s;
+    }
+
+    .hidden {
+        display: none;
     }
 
     .slider-items__right-arrow {

@@ -1,85 +1,121 @@
 const $ = c => document.querySelector(c);
 const $All = c => document.querySelectorAll(c);
 const LEFT = "LEFT", RIGHT = "RIGHT";
-let isLeftPhoneDisabled = false, isRightPhoneDisabled = false;
 let currentSlide = 0, nextSlide = 0, portfolioImagesSrc = [];
 
+//src всех картинок в массив
 $All(".portfolio-image").forEach(e => portfolioImagesSrc.push(e.src));
-$All(".slider-image").forEach( (el, i) => i==0 ? $All(".slider-image")[i].style.left="0%" : $All(".slider-image")[i].style.display="none" );
+
+//Первоначально все слайды невидимые в стартовой позиции
+$All(".slider-image").forEach( (el, i) => {
+    i==0 
+        ? $All(".slider-image")[i].style.left="0%" 
+        : $All(".slider-image")[i].style.display="none" 
+});
+
+//Нажатия кнопок влево и вправо
+$(".slider-items__right-arrow").addEventListener( 'click', () => moveSlides(RIGHT) );
+$(".slider-items__left-arrow").addEventListener( 'click', () => moveSlides(LEFT) );
 
 const moveSlides = (direction) => {
-    switch (direction) {
-        case RIGHT:
-            nextSlide += 1;
-            nextSlide > $All(".slider-image").length-1 ? nextSlide = 0 : null;
-            $All(".slider-image")[nextSlide].style.left = "100%";
-            break;
-        case LEFT:
-            nextSlide -= 1;
-            nextSlide < 0 ? nextSlide = $All(".slider-image").length-1 : null;
-            $All(".slider-image")[nextSlide].style.left = "-100%";
-            break;
-        default:
-            break;
+    setNextSlidePosition(direction);
+    switchArrowsVisibility("none");
+    moveSlidesAhead(direction);
+}
+
+const setNextSlidePosition = (direction) => {
+    if (direction === RIGHT) {
+        nextSlide += 1;
+        if (nextSlide > $All(".slider-image").length-1) nextSlide = 0;
+        $All(".slider-image")[nextSlide].style.left = "100%";
+    } else {
+        nextSlide -= 1;
+        if (nextSlide < 0)  nextSlide = $All(".slider-image").length-1;
+        $All(".slider-image")[nextSlide].style.left = "-100%";
     }
     $All(".slider-image")[nextSlide].style.display = "block";
-    $(".slider-items__right-arrow").style.display = "none";
-    $(".slider-items__left-arrow").style.display = "none";
+}
+
+const switchArrowsVisibility = (status) => {
+    $(".slider-items__right-arrow").style.display = status;
+    $(".slider-items__left-arrow").style.display = status;
+}
+
+const moveSlidesAhead = (direction) => {
     setTimeout( () => {
-        $All(".slider-image")[nextSlide].style.left = "0%";
-        direction === RIGHT
-            ? $All(".slider-image")[currentSlide].style.left = "-100%"
-            : $All(".slider-image")[currentSlide].style.left = "100%";
-        (direction === RIGHT && currentSlide == 0) || (direction === LEFT && currentSlide == 2)
-            ? $('.slider').classList.add('slider-blue')
-            : $('.slider').classList.remove('slider-blue');
+        $All(".slider-image")[nextSlide].style.left = "0%";    
     }, 30);
+
+    direction === RIGHT
+        ? $All(".slider-image")[currentSlide].style.left = "-100%"
+        : $All(".slider-image")[currentSlide].style.left = "100%";
+    (direction === RIGHT && currentSlide == 0) || (direction === LEFT && currentSlide == 2)
+        ? $('.slider').classList.add('slider-blue')
+        : $('.slider').classList.remove('slider-blue');
+
     setTimeout( () => {
         $All(".slider-image")[currentSlide].style.display = "none";
         currentSlide = nextSlide;
-        $(".slider-items__right-arrow").style.display = "block";
-        $(".slider-items__left-arrow").style.display = "block";
+        switchArrowsVisibility("block");
     }, 1000);
 }
 
+//Включение-выключение экранов телефонов
+$(".left-phone-switcher").addEventListener( 'click', () => switchPhone(LEFT) );
+$(".right-phone-switcher").addEventListener( 'click', () => switchPhone(RIGHT) );
+
 const switchPhone = (phone) => {
-    phone === LEFT ? isLeftPhoneDisabled = !isLeftPhoneDisabled : isRightPhoneDisabled = !isRightPhoneDisabled;
-    phone === LEFT
-        ? (isLeftPhoneDisabled ? $(".left-phone-black-screen").style.display = "block" : $(".left-phone-black-screen").style.display = "none")
-        : (isRightPhoneDisabled ? $(".right-phone-black-screen").style.display = "block" : $(".right-phone-black-screen").style.display = "none")
+    if (phone === LEFT) {
+        $(".left-phone-black-screen").classList.contains("hidden") 
+            ? $(".left-phone-black-screen").classList.remove("hidden")
+            : $(".left-phone-black-screen").classList.add("hidden")
+    } else {
+        $(".right-phone-black-screen").classList.contains("hidden") 
+            ? $(".right-phone-black-screen").classList.remove("hidden")
+            : $(".right-phone-black-screen").classList.add("hidden")
+    }
 }
 
+//Сортировка картинок в portfolio
 const replacePortfolioImages = () => {
     portfolioImagesSrc.sort( () => Math.random() - 0.5 );
     for ( let i=0; i<portfolioImagesSrc.length; i++ ) {
         $All(".portfolio-image")[i].src = portfolioImagesSrc[i];
     }
-    $(".portfolio-items").querySelectorAll(".portfolio-image").forEach(el=>{
-        el.classList.remove("portfolio-image-active");});
 }
 
+//Переключение активной категории portfolio
 $(".buttons").addEventListener('click', (e) => {
-    if (e.target.tagName === "DIV") return;
     $(".buttons").querySelectorAll('.btn').forEach(el => {
-        if ( e.target !== el ) {
-            el.classList.remove("btn__active");
-        }
-        if ( e.target == el && !el.classList.contains("btn__active") ) {
-            e.target.classList.add("btn__active");
-            replacePortfolioImages();
+        if (e.target.tagName === "BUTTON") {
+            if ( e.target !== el ) {
+                el.classList.remove("btn__active");
+            }
+            if ( e.target == el && !el.classList.contains("btn__active") ) {
+                e.target.classList.add("btn__active");
+                replacePortfolioImages();
+                $(".portfolio-items").querySelectorAll(".portfolio-image").forEach(el=>{
+                    el.classList.remove("portfolio-image-active");});
+            }
         }
     })
 });
 
+//Переключение активной категории меню в header
 $(".header-menu").addEventListener('click', (e) => {
-    if ( e.target.tagName !== "A" ) return;
     $(".header-menu").querySelectorAll('a').forEach(el => {
-        el.classList.remove("header-menu_active");
-        e.target.classList.add("header-menu_active");
+        if ( e.target.tagName === "A" ) {
+            el.classList.remove("header-menu_active");
+            e.target.classList.add("header-menu_active");
+        }
     })
 });
 
-$(".btn-submit").addEventListener('click', (e) => {
+//сабмит формы
+$(".btn-submit").addEventListener('click', (e) => { formSubmit(e) });
+
+
+const formSubmit = (e) => {
     if (document.forms["form"].email.checkValidity() && document.forms["form"].name.checkValidity()) {
         e.preventDefault();
         document.forms["form"].name.value="";
@@ -95,23 +131,28 @@ $(".btn-submit").addEventListener('click', (e) => {
         $(".popup").style.display="block";
         $("body").style.overflow="hidden";
     }
-});
+}
 
+//Включение-выключение активной картинки в портфолио
 $(".portfolio-items").addEventListener('click', (e) => {
-    if (e.target.tagName === "DIV") return;
     $(".portfolio-items").querySelectorAll(".portfolio-image").forEach(el=>{
-        e.target === el
-            ? (el.classList.contains("portfolio-image-active")
-                ? el.classList.remove("portfolio-image-active") : el.classList.add("portfolio-image-active"))
-            : el.classList.contains("portfolio-image-active")
-                ? el.classList.remove("portfolio-image-active") : null;
+        if (e.target.tagName !== "IMG") return;
+        if (e.target === el) {
+            if ( el.classList.contains("portfolio-image-active") ) {
+                el.classList.remove("portfolio-image-active");
+            } else {
+                el.classList.add("portfolio-image-active");
+            }
+        } else {
+            if ( el.classList.contains("portfolio-image-active") ) {
+                el.classList.remove("portfolio-image-active");
+            }
+        }
     });
 });
 
-$(".left-phone-switcher").addEventListener( 'click', () => switchPhone(LEFT) );
-$(".right-phone-switcher").addEventListener( 'click', () => switchPhone(RIGHT) );
-$(".slider-items__right-arrow").addEventListener( 'click', () => moveSlides(RIGHT) );
-$(".slider-items__left-arrow").addEventListener( 'click', () => moveSlides(LEFT) );
+
+//закрытие модального окна
 $(".popup_btn").addEventListener('click', e => {
     $(".popup").style.display="none";
     $("body").style.overflow="visible";
