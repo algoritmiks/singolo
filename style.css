@@ -169,7 +169,6 @@
         background-color: black;
         top: 118px;
         left: 94px;
-        transition: all ease 1s;
     }
 
     .right-phone-black-screen {
@@ -179,7 +178,6 @@
         background-color: black;
         top: 189px;
         left:436px;
-        transition: all ease 1s;
     }
 
     .hidden {
