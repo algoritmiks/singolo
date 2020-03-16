@@ -3,12 +3,11 @@ const $All = c => document.querySelectorAll(c);
 let currentSlide = 0, nextSlide = 0, portfolioImagesSrc = [];
 
 //src всех картинок в массив
-$All(".portfolio-image").forEach(e => portfolioImagesSrc.push(e.src));
+$All(".portfolio-image").forEach( e => portfolioImagesSrc.push(e.src) );
 
 //Позиционирование первого слайда
 $All(".slider-image")[0].style.left="0%";
 
-//Нажатия стрелок влево и вправо
 $(".slider-items__right-arrow").addEventListener( 'click', () => moveSlidesHandler("RIGHT") );
 $(".slider-items__left-arrow").addEventListener( 'click', () => moveSlidesHandler("LEFT") );
 
@@ -56,7 +55,7 @@ const setSlidesBackgroundColor = (direction) => {
         : $('.slider').classList.remove('slider-blue');
 }
 
-//Спрятать слайд после перемещения
+//Спрятать слайд по таймауту после перемещения
 const hideSlideAfterMove = () => {
     setTimeout( () => {
         $All(".slider-image")[currentSlide].classList.add("hidden");
@@ -71,10 +70,10 @@ const switchArrowsVisibility = (status) => {
     $(".slider-items__left-arrow").style.display = status;
 }
 
-//Включение-выключение экранов телефонов
 $(".right-phone-switcher").addEventListener( 'click', () => switchPhoneHandler(".right-phone-black-screen") );
 $(".left-phone-switcher").addEventListener( 'click', () => switchPhoneHandler(".left-phone-black-screen") );
 
+//Включение-выключение экранов телефонов
 const switchPhoneHandler = (phone) => {
     $(phone).classList.contains("hidden")
         ? $(phone).classList.remove("hidden")
@@ -108,9 +107,9 @@ const replacePortfolioImages = () => {
     }
 }
 
-//Переключение активной категории меню в header
 $(".header-menu").addEventListener( 'click', e => headerMenuHandler(e) );
 
+//Переключение активной категории меню в header
 const headerMenuHandler = (e) => {
     $(".header-menu").querySelectorAll('a').forEach(el => {
         if ( e.target.tagName === "A" ) {
@@ -119,7 +118,6 @@ const headerMenuHandler = (e) => {
         }
     })
 }
-
 
 $(".btn-submit").addEventListener( 'click', e => formSubmitHandler(e) );
 
