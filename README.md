@@ -6,5 +6,5 @@ Singolo:
 
 [Deploy singolo 3](https://algoritmiks.github.io/singolo/index3.html)
 
-[Deploy full singolo](https://algoritmiks.github.io/singolo/index.html)
+[Deploy singolo DOM](http://algoritmiks.ru)
 
