@@ -3,6 +3,11 @@
     * {
         font-family: Lato, sans-serif;
     }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
     body {
         margin: 0;
     }
@@ -10,11 +15,21 @@
     .header {
         background-color: #2d303a;
         border-bottom: 6px solid #323746;
+        position: sticky;
+        top: 0;
+        z-index: 3;
     }
     
     .slider {
         background-color: #f06c64;
         border-bottom: 6px solid #ea676b;
+        transition: all ease 1s;
+    }
+
+    .slider-blue {
+        background-color: #648bf0;
+        border-bottom: 6px solid #348bf0;
+        transition: all ease 1s;
     }
 
     .services {
@@ -88,34 +103,92 @@
         color: #f06c64;
     }
 
-    .header-menu__active {
-        color: #f06c64;
+    .header-menu_active {
+        color: #64f06b;
+        
     }
 
     .slider-items {
-        display: flex;
-        flex-direction: row; 
-        justify-content: space-between; 
-        align-items: center;
-        padding: 53px 0;
+        position: relative;
+        overflow: hidden;
+        max-width: 940px;
+        height: 585px;
     }
 
     .slider-items__left-arrow {
-        margin-left: 2px;
-       -webkit-transform: scaleX(-1);
+        position: absolute;
+        top: 50%;
+        -webkit-transform: scaleX(-1);
+        z-index: 1;
+    }
+
+    .slider-image {
+        position: absolute;
+        width: 940px;
+        height: 100%;
+        transition: all ease 1s;
+    }
+
+    .first-image {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        padding-left: 80px;
+        padding-right: 80px;
+        padding-top: 53px;
     }
 
     .arrow_hover {
         cursor: pointer;
     }
 
-    .slider-items__right-phone {
-        margin-left: 19px;
-        margin-top: -1px;
+    .left-phone-switcher {
+        position: absolute;
+        width: 215px;
+        height: 460px;
+        border-radius: 27px;
+        background-color: rgba(90, 190, 90, 0);
+        top: 52px;
+        left: 80px;
+    }
+
+    .right-phone-switcher {
+        position: absolute;
+        width: 459px;
+        height: 215px;
+        border-radius: 27px;
+        background-color: rgba(90, 190, 90, 0);
+        top: 175px;
+        left: 376px;
+    }
+
+    .left-phone-black-screen {
+        position: absolute;
+        width: 188px;
+        height: 333px;
+        background-color: black;
+        top: 118px;
+        left: 94px;
+    }
+
+    .right-phone-black-screen {
+        position: absolute;
+        width: 333px;
+        height: 188px;
+        background-color: black;
+        top: 189px;
+        left:436px;
+    }
+
+    .hidden {
+        display: none;
     }
 
     .slider-items__right-arrow {
-        margin-left: 1px;
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        right: 0%;
     }
 
     .services {
@@ -224,11 +297,15 @@
         padding-top: 19px;
         padding-bottom: 46px;
     }
+
+    .portfolio-image-active {
+        outline: 5px solid #f06c64;
+    }
     
     .portfolio-image {
         width: 220px;
         height: 187px;
-        padding-bottom: 20px;
+        margin-bottom: 20px;
     }
     
     .portfolio-image:nth-child(n+13) {
@@ -310,6 +387,9 @@
         font-size: 12px;
         margin-right: 7px;
         font-weight: 530;
+    }
+    .btn:focus {
+        outline: none;
     }
     
     .btn:hover {
@@ -441,7 +521,29 @@
         cursor: pointer;
         color: #f0d8d9;
     }
-    
+
+    .popup {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.9);
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 99;
+    }
+
+    .popup__inside {
+        position: fixed;
+        border: 3px solid rgb(58, 58, 58);
+        border-radius: 4px;
+        background-color: rgb(202, 202, 202);
+        left: 50%;
+        top: 50%;
+        max-width: 400px;
+        padding: 20px;
+        transform: translate(-50%, -50%);
+    }
+  
     .addr, .phone, .email {
         display: block;
         margin-bottom: -12px;
@@ -466,4 +568,29 @@
         margin-left: 4px;
     }
 
+    #services {
+        position: absolute;
+        width: 1px;
+        height: 1x;
+        background-color: rgba(0,0,0,0);
+        left: -200px;
+        top:600px;
+    }
     
+    #portfolio {
+        position: absolute;
+        width: 1px;
+        height: 1x;
+        background-color: rgba(0,0,0,0);
+        left: -200px;
+        top:1100px;
+    }
+
+    #about {
+        position: absolute;
+        width: 1px;
+        height: 1x;
+        background-color: rgba(0,0,0,0);
+        left: -200px;
+        top:1960px;
+    }

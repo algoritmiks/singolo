@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <div id="services"></div>
+    <div id="portfolio"></div>
+    <div id="about"></div>
     <header class="header">
         <div class="wrapper">
             <div class="header-box">
@@ -18,11 +21,14 @@
                 <div class="header-navigation">
                     <nav>
                         <ul class="header-menu">
-                            <li class="header-menu__item"><a class="header-menu__link header-menu__active" href="#">HOME</a></li>
-                            <li class="header-menu__item"><a class="header-menu__link" href="#">SERVICES</a></li>
-                            <li class="header-menu__item"><a class="header-menu__link" href="#">PORTFOLIO</a></li>
-                            <li class="header-menu__item"><a class="header-menu__link" href="#">ABOUT</a></li>
-                            <li class="header-menu__item"><a class="header-menu__link" href="#">CONTACT</a></li>
+                            <li class="header-menu__item"><a class="header-menu__link header-menu_active"
+                                    href="#">HOME</a></li>
+                            <li class="header-menu__item"><a class="header-menu__link" href="#services">SERVICES</a>
+                            </li>
+                            <li class="header-menu__item"><a class="header-menu__link" href="#portfolio">PORTFOLIO</a>
+                            </li>
+                            <li class="header-menu__item"><a class="header-menu__link" href="#about">ABOUT</a></li>
+                            <li class="header-menu__item"><a class="header-menu__link" href="#contact">CONTACT</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -34,20 +40,36 @@
         <section class="slider">
             <div class="wrapper">
                 <div class="slider-items">
-                    <div class="slider-items__left-arrow arrow_hover">
-                        <img src="assets/icons/icon-navigation.png" alt="left arrow image">
-                    </div>
                     <div>
-                        <img src="assets/icons/phone-left.png" alt="phone image">
-                    </div>
-                    <div class="slider-items__right-phone">
-                        <img src="assets/icons/phone-right.png" alt="phone image">
-                    </div>
-                    <div class="slider-items__right-arrow arrow_hover" alt="right arrow image">
-                        <img src="assets/icons/icon-navigation.png">
+                        <div class="slider-image">
+                            <div class="first-image">
+                                <div>
+                                    <img src="assets/icons/phone-left.png" alt="phone image">
+                                    <div class="left-phone-black-screen hidden"></div>
+                                    <div class="left-phone-switcher"></div>
+                                </div>
+                                <div class="slider-items__right-phone">
+                                    <img src="assets/icons/phone-right.png" alt="phone image">
+                                    <div class="right-phone-black-screen hidden"></div>
+                                    <div class="right-phone-switcher"></div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="slider-image hidden">
+                            <img  src="assets/icons/Slide-2.png" alt="slide">
+                        </div>
+                        <div class="slider-image hidden">
+                            <img src="assets/icons/Slide-3.png" alt="slide">
+                        </div>
+                        <div class="slider-items__right-arrow arrow_hover">
+                            <img src="assets/icons/icon-navigation.png" alt="right arrow image">
+                        </div>
+                        <div class="slider-items__left-arrow arrow_hover">
+                            <img src="assets/icons/icon-navigation.png" alt="left arrow image">
+                        </div>
                     </div>
                 </div>
-            </div>
         </section>
 
         <section class="services">
@@ -221,11 +243,21 @@
                         <input class="input" type="text" name="name" placeholder="Name (Required)" required="">
                         <input class="input" type="email" name="email" placeholder="Email (Required)" required="">
                         <input class="input" type="text" name="subj" placeholder="Subject">
-                        <textarea class="input input-txt" name="msg" placeholder="Describe your project in detail..."></textarea>
-                        <button class="btn-submit" type="submit" name="send_other">Submit</button>
-                        </form>
+                        <textarea class="input input-txt" name="msg"
+                            placeholder="Describe your project in detail..."></textarea>
+                        <button class="btn-submit" type="submit" >Submit</button>
+                    </form>
 
-                    <div class="contact-information">
+                    <div class="popup hidden">
+                        <div class="popup__inside">
+                            <span>Письмо отправлено</span> <br>
+                            <span class="popup__theme"> Тема: </span> <br>
+                            <span class="popup__description">Описание: </span> <br>
+                            <button class="popup_btn">OK</button>
+                        </div>
+                    </div>
+
+                    <div class="contact-information" id="contact">
                         <h3 class="contact-information__header">Contact Information</h3>
                         <p class="contact-information__description">
                             Quisque hendrerit purus dapibus, ornare nibh vitae, viver&shy;ra nibh. Fusce vitae aliquam
@@ -260,6 +292,7 @@
             </div>
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 
 </html>
