@@ -8,6 +8,18 @@ $All(".portfolio-image").forEach( e => portfolioImagesSrc.push(e.src) );
 //Позиционирование первого слайда
 $All(".slider-image")[0].style.left="0%";
 
+$(".header-menu").addEventListener( 'click', e => headerMenuHandler(e) );
+
+//Переключение активной категории меню в header
+const headerMenuHandler = (e) => {
+    $(".header-menu").querySelectorAll('a').forEach(el => {
+        if ( e.target.tagName === "A" ) {
+            el.classList.remove("header-menu_active");
+            e.target.classList.add("header-menu_active");
+        }
+    })
+}
+
 $(".slider-items__right-arrow").addEventListener( 'click', () => moveSlidesHandler("RIGHT") );
 $(".slider-items__left-arrow").addEventListener( 'click', () => moveSlidesHandler("LEFT") );
 
@@ -30,7 +42,6 @@ const setNextSlidePosition = (direction) => {
         $All(".slider-image")[nextSlide].style.left = "-100%";
     }
     $All(".slider-image")[nextSlide].classList.remove("hidden");
-
 }
 
 //Перемещение слайдов на новую позицию
@@ -38,18 +49,15 @@ const moveSlidesAhead = (direction) => {
     setTimeout( () => {
         $All(".slider-image")[nextSlide].style.left = "0%";    
     }, 30);
-
     direction === "RIGHT"
         ? $All(".slider-image")[currentSlide].style.left = "-100%"
         : $All(".slider-image")[currentSlide].style.left = "100%";
-
-    setSlidesBackgroundColor(direction);
-
+    setSlideBackgroundColor(direction);
     hideSlideAfterMove();
 }
 
 //Задание фона для слайдов
-const setSlidesBackgroundColor = (direction) => {
+const setSlideBackgroundColor = (direction) => {
     (direction === "RIGHT" && currentSlide == 0) || (direction === "LEFT" && currentSlide == 2)
         ? $('.slider').classList.add('slider-blue')
         : $('.slider').classList.remove('slider-blue');
@@ -107,39 +115,6 @@ const replacePortfolioImages = () => {
     }
 }
 
-$(".header-menu").addEventListener( 'click', e => headerMenuHandler(e) );
-
-//Переключение активной категории меню в header
-const headerMenuHandler = (e) => {
-    $(".header-menu").querySelectorAll('a').forEach(el => {
-        if ( e.target.tagName === "A" ) {
-            el.classList.remove("header-menu_active");
-            e.target.classList.add("header-menu_active");
-        }
-    })
-}
-
-$(".btn-submit").addEventListener( 'click', e => formSubmitHandler(e) );
-
-//сабмит формы
-const formSubmitHandler = (e) => {
-    if (document.forms["form"].email.checkValidity() && document.forms["form"].name.checkValidity()) {
-        e.preventDefault();
-        document.forms["form"].name.value="";
-        document.forms["form"].email.value="";
-        document.forms["form"].subj.value !== ""
-            ? $(".popup__theme").textContent = `Тема: ${document.forms["form"].subj.value}`
-            : $(".popup__theme").textContent = "Без темы";
-        document.forms["form"].subj.value = "";
-        document.forms["form"].msg.value !==""
-            ? $(".popup__description").textContent = `Описание: ${document.forms["form"].msg.value}`
-            : $(".popup__description").textContent = "Без описания";
-        document.forms["form"].msg.value = "";
-        $(".popup").classList.remove("hidden");
-        $("body").style.overflow="hidden";
-    }
-}
-
 $(".portfolio-items").addEventListener( 'click', e => portfolioImagesHandler(e) );
 
 //Включение-выключение активной картинки в портфолио
@@ -158,6 +133,37 @@ const portfolioImagesHandler = (e) => {
             }
         }
     });
+}
+
+$(".btn-submit").addEventListener( 'click', e => formSubmitHandler(e) );
+
+//сабмит формы
+const formSubmitHandler = (e) => {
+    if (document.forms["form"].email.checkValidity() && document.forms["form"].name.checkValidity()) {
+        e.preventDefault();
+        document.forms["form"].subj.value !== ""
+            ? $(".popup__theme").textContent = `Тема: ${document.forms["form"].subj.value}`
+            : $(".popup__theme").textContent = "Без темы";
+        document.forms["form"].msg.value !==""
+            ? $(".popup__description").textContent = `Описание: ${document.forms["form"].msg.value}`
+            : $(".popup__description").textContent = "Без описания";
+        clearForm();
+        showPopupWindow();
+    }
+}
+
+//Очистить отправленную форму
+const clearForm = () => {
+    document.forms["form"].name.value="";
+    document.forms["form"].email.value="";
+    document.forms["form"].subj.value = "";
+    document.forms["form"].msg.value = "";
+}
+
+//Показать модальное окно после отправки формы
+const showPopupWindow = () => {
+    $(".popup").classList.remove("hidden");
+    $("body").style.overflow="hidden";
 }
 
 $(".popup_btn").addEventListener( 'click', () => popupButtonHandler() );
