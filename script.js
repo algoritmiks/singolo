@@ -11,7 +11,7 @@ $All(".slider-image")[0].style.left="0%";
 $(".header-menu").addEventListener( 'click', e => switchHeaderMenuHandler(e) );
 
 //set active category in header menu
-const headerMenuHandler = (e) => {
+const switchHeaderMenuHandler = (e) => {
     $(".header-menu").querySelectorAll('a').forEach(el => {
         if ( e.target.tagName === "A" ) {
             el.classList.remove("header-menu_active");
