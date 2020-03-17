@@ -118,8 +118,17 @@
     .slider-items__left-arrow {
         position: absolute;
         top: 50%;
-        -webkit-transform: scaleX(-1);
+        opacity: 0.3;
         z-index: 1;
+    }
+
+    .slider-items__right-arrow {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        right: 0%;
+        opacity: 0.3;
+        -webkit-transform: scaleX(-1);
     }
 
     .slider-image {
@@ -150,6 +159,7 @@
         background-color: rgba(90, 190, 90, 0);
         top: 52px;
         left: 80px;
+        cursor: pointer;
     }
 
     .right-phone-switcher {
@@ -160,6 +170,7 @@
         background-color: rgba(90, 190, 90, 0);
         top: 175px;
         left: 376px;
+        cursor: pointer;
     }
 
     .left-phone-black-screen {
@@ -184,12 +195,7 @@
         display: none;
     }
 
-    .slider-items__right-arrow {
-        position: absolute;
-        z-index: 1;
-        top: 50%;
-        right: 0%;
-    }
+
 
     .services {
         padding: 46px 0 42px 0;
@@ -429,6 +435,7 @@
     footer {
         background-color: #2d303a;
     }
+    
     .title {
         font-size: 30px;
         line-height: 11px;
@@ -446,8 +453,7 @@
         text-align: justify;
         margin-top: 26px;
     }
-    
-    
+        
     .quote-wrapper {
         display: flex;
         flex-direction: row; 
@@ -557,9 +563,9 @@
         left: 50%;
         margin-top: 5px;
         transform: translate(-50%, 0%);
+        cursor: pointer;
     }
     
-
     .addr, .phone, .email {
         display: block;
         margin-bottom: -12px;

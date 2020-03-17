@@ -100,7 +100,7 @@ const setActivePortfolioMenuHandler = (e) => {
             if ( e.target == el && !el.classList.contains("btn__active") ) {
                 e.target.classList.add("btn__active");
                 replacePortfolioImages();
-                $(".portfolio-items").querySelectorAll(".portfolio-image").forEach(el=>{
+                $All(".portfolio-image").forEach(el=>{
                     el.classList.remove("portfolio-image-active");});
             }
         }
