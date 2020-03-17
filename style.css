@@ -539,11 +539,27 @@
         background-color: rgb(202, 202, 202);
         left: 50%;
         top: 50%;
-        max-width: 400px;
         padding: 20px;
         transform: translate(-50%, -50%);
     }
   
+    .popup__text {
+        max-width: 500px;
+        max-height: 300px;
+        overflow: hidden;
+        text-align: justify;
+        line-height: 20px;
+
+    }
+
+    .popup_btn {
+        position: relative;
+        left: 50%;
+        margin-top: 5px;
+        transform: translate(-50%, 0%);
+    }
+    
+
     .addr, .phone, .email {
         display: block;
         margin-bottom: -12px;
