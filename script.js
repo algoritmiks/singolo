@@ -2,15 +2,15 @@ const $ = c => document.querySelector(c);
 const $All = c => document.querySelectorAll(c);
 let currentSlide = 0, nextSlide = 0, portfolioImagesSrc = [];
 
-//src всех картинок в массив
+//src of images to array
 $All(".portfolio-image").forEach( e => portfolioImagesSrc.push(e.src) );
 
-//Позиционирование первого слайда
+//first slide position
 $All(".slider-image")[0].style.left="0%";
 
 $(".header-menu").addEventListener( 'click', e => headerMenuHandler(e) );
 
-//Переключение активной категории меню в header
+//set active category in header menu
 const headerMenuHandler = (e) => {
     $(".header-menu").querySelectorAll('a').forEach(el => {
         if ( e.target.tagName === "A" ) {
@@ -23,14 +23,14 @@ const headerMenuHandler = (e) => {
 $(".slider-items__right-arrow").addEventListener( 'click', () => moveSlidesHandler("RIGHT") );
 $(".slider-items__left-arrow").addEventListener( 'click', () => moveSlidesHandler("LEFT") );
 
-//Перемещения слайдов по нажатию стрелок.
+//move slides by press arrow
 const moveSlidesHandler = (direction) => {
     setNextSlidePosition(direction);
     switchArrowsVisibility("none");
     moveSlidesAhead(direction);
 }
 
-//Установка следующего слайда в зависимости от нажатой стрелки
+//set next slide depending on press arrow
 const setNextSlidePosition = (direction) => {
     if (direction === "RIGHT") {
         nextSlide += 1;
@@ -44,7 +44,7 @@ const setNextSlidePosition = (direction) => {
     $All(".slider-image")[nextSlide].classList.remove("hidden");
 }
 
-//Перемещение слайдов на новую позицию
+//move slides to new position
 const moveSlidesAhead = (direction) => {
     setTimeout( () => {
         $All(".slider-image")[nextSlide].style.left = "0%";    
@@ -56,14 +56,14 @@ const moveSlidesAhead = (direction) => {
     hideSlideAfterMove();
 }
 
-//Задание фона для слайдов
+//set background for slides
 const setSlideBackgroundColor = (direction) => {
     (direction === "RIGHT" && currentSlide == 0) || (direction === "LEFT" && currentSlide == 2)
         ? $('.slider').classList.add('slider-blue')
         : $('.slider').classList.remove('slider-blue');
 }
 
-//Спрятать слайд по таймауту после перемещения
+//hide slide after move
 const hideSlideAfterMove = () => {
     setTimeout( () => {
         $All(".slider-image")[currentSlide].classList.add("hidden");
@@ -72,7 +72,7 @@ const hideSlideAfterMove = () => {
     }, 1000);
 }
 
-//Установка видимости стрелок
+//set arrows visibility
 const switchArrowsVisibility = (status) => {
     $(".slider-items__right-arrow").style.display = status;
     $(".slider-items__left-arrow").style.display = status;
@@ -81,7 +81,7 @@ const switchArrowsVisibility = (status) => {
 $(".right-phone-switcher").addEventListener( 'click', () => switchPhoneHandler(".right-phone-black-screen") );
 $(".left-phone-switcher").addEventListener( 'click', () => switchPhoneHandler(".left-phone-black-screen") );
 
-//Включение-выключение экранов телефонов
+//switch on\off phones screens
 const switchPhoneHandler = (phone) => {
     $(phone).classList.contains("hidden")
         ? $(phone).classList.remove("hidden")
@@ -90,7 +90,7 @@ const switchPhoneHandler = (phone) => {
 
 $(".buttons").addEventListener( 'click', e => portfolioMenuHandler(e) );
 
-//Переключение активной категории portfolio
+//set active category in portfolio
 const portfolioMenuHandler = (e) => {
     $(".buttons").querySelectorAll('.btn').forEach(el => {
         if (e.target.tagName === "BUTTON") {
@@ -107,7 +107,7 @@ const portfolioMenuHandler = (e) => {
     })
 }
 
-//Сортировка картинок в portfolio
+//pictures sort in portfolio
 const replacePortfolioImages = () => {
     portfolioImagesSrc.sort( () => Math.random() - 0.5 );
     for ( let i=0; i<portfolioImagesSrc.length; i++ ) {
@@ -117,18 +117,17 @@ const replacePortfolioImages = () => {
 
 $(".portfolio-items").addEventListener( 'click', e => portfolioImagesHandler(e) );
 
-//Включение-выключение активной картинки в портфолио
+//set active picture in potrfolio
 const portfolioImagesHandler = (e) => {
     $(".portfolio-items").querySelectorAll(".portfolio-image").forEach( el => {
-        if (e.target.tagName !== "IMG") return;
-        if (e.target === el) {
-            if ( el.classList.contains("portfolio-image-active") ) {
-                el.classList.remove("portfolio-image-active");
+        if (e.target.tagName === "IMG") {
+            if (e.target === el) {
+                if (el.classList.contains("portfolio-image-active")) {
+                    el.classList.remove("portfolio-image-active");
+                } else {
+                    el.classList.add("portfolio-image-active");
+                }
             } else {
-                el.classList.add("portfolio-image-active");
-            }
-        } else {
-            if ( el.classList.contains("portfolio-image-active") ) {
                 el.classList.remove("portfolio-image-active");
             }
         }
@@ -137,30 +136,37 @@ const portfolioImagesHandler = (e) => {
 
 $(".btn-submit").addEventListener( 'click', e => formSubmitHandler(e) );
 
-//сабмит формы
+//form submit
 const formSubmitHandler = (e) => {
     if (document.forms["form"].email.checkValidity() && document.forms["form"].name.checkValidity()) {
         e.preventDefault();
-        document.forms["form"].subj.value !== ""
-            ? $(".popup__theme").textContent = `Тема: ${document.forms["form"].subj.value}`
-            : $(".popup__theme").textContent = "Без темы";
-        document.forms["form"].msg.value !==""
-            ? $(".popup__description").textContent = `Описание: ${document.forms["form"].msg.value}`
-            : $(".popup__description").textContent = "Без описания";
+        fillFormSubject();
+        fillFormMessage();
         clearForm();
         showPopupWindow();
     }
 }
 
-//Очистить отправленную форму
-const clearForm = () => {
-    document.forms["form"].name.value="";
-    document.forms["form"].email.value="";
-    document.forms["form"].subj.value = "";
-    document.forms["form"].msg.value = "";
+//fill subject
+const fillFormSubject = () => {
+    document.forms["form"].subj.value !== ""
+        ? $(".popup__theme").textContent = `Тема: ${document.forms["form"].subj.value}`
+        : $(".popup__theme").textContent = "Без темы";
 }
 
-//Показать модальное окно после отправки формы
+//fill message
+const fillFormMessage = () => {
+    document.forms["form"].msg.value !== ""
+    ? $(".popup__description").textContent = `Описание: ${document.forms["form"].msg.value}`
+    : $(".popup__description").textContent = "Без описания";
+}
+
+//clear form
+const clearForm = () => {
+    document.forms["form"].reset();
+}
+
+//show modal window after submit form
 const showPopupWindow = () => {
     $(".popup").classList.remove("hidden");
     $("body").style.overflow="hidden";
@@ -168,7 +174,7 @@ const showPopupWindow = () => {
 
 $(".popup_btn").addEventListener( 'click', () => popupButtonHandler() );
 
-//закрытие модального окна
+//close modal window
 const popupButtonHandler = () => {
     $(".popup").classList.add("hidden");
     $("body").style.overflow="visible";   
