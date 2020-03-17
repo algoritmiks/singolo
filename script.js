@@ -8,7 +8,7 @@ $All(".portfolio-image").forEach( e => portfolioImagesSrc.push(e.src) );
 //first slide position
 $All(".slider-image")[0].style.left="0%";
 
-$(".header-menu").addEventListener( 'click', e => headerMenuHandler(e) );
+$(".header-menu").addEventListener( 'click', e => switchHeaderMenuHandler(e) );
 
 //set active category in header menu
 const headerMenuHandler = (e) => {
@@ -88,10 +88,10 @@ const switchPhoneHandler = (phone) => {
         : $(phone).classList.add("hidden")
 }
 
-$(".buttons").addEventListener( 'click', e => portfolioMenuHandler(e) );
+$(".buttons").addEventListener( 'click', e => setActivePortfolioMenuHandler(e) );
 
 //set active category in portfolio
-const portfolioMenuHandler = (e) => {
+const setActivePortfolioMenuHandler = (e) => {
     $(".buttons").querySelectorAll('.btn').forEach(el => {
         if (e.target.tagName === "BUTTON") {
             if ( e.target !== el ) {
@@ -115,10 +115,10 @@ const replacePortfolioImages = () => {
     }
 }
 
-$(".portfolio-items").addEventListener( 'click', e => portfolioImagesHandler(e) );
+$(".portfolio-items").addEventListener( 'click', e => setActivePortfolioImageHandler(e) );
 
 //set active picture in potrfolio
-const portfolioImagesHandler = (e) => {
+const setActivePortfolioImageHandler = (e) => {
     $(".portfolio-items").querySelectorAll(".portfolio-image").forEach( el => {
         if (e.target.tagName === "IMG") {
             if (e.target === el) {
@@ -134,10 +134,10 @@ const portfolioImagesHandler = (e) => {
     });
 }
 
-$(".btn-submit").addEventListener( 'click', e => formSubmitHandler(e) );
+$(".btn-submit").addEventListener( 'click', e => submitFormHandler(e) );
 
 //form submit
-const formSubmitHandler = (e) => {
+const submitFormHandler = (e) => {
     if (document.forms["form"].email.checkValidity() && document.forms["form"].name.checkValidity()) {
         e.preventDefault();
         fillFormSubject();
