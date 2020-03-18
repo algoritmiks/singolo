@@ -104,8 +104,7 @@
     }
 
     .header-menu_active {
-        color: #64f06b;
-        
+        color: #f06c64;
     }
 
     .slider-items {
@@ -280,6 +279,7 @@
         display: flex;
         flex-direction: row; 
         justify-content: space-between; 
+        flex-wrap: wrap;
         margin-top: 43px;
     }
     
@@ -312,6 +312,7 @@
         width: 220px;
         height: 187px;
         margin-bottom: 20px;
+        cursor: pointer;
     }
     
     .portfolio-image:nth-child(n+13) {
@@ -505,7 +506,6 @@
         margin-bottom: 17px;
         padding-left: 15px;
         color: #f0d8d9;
-        cursor: pointer;
     }
     
     .input::placeholder {
@@ -518,14 +518,15 @@
     }
     
     .btn-submit {
-        height: 30px;
-        width: 100px;
+        height: 38px;
+        width: 136px;
         font-size: 12px;
+        font-weight: bold;
         border-radius: 5px;
         border: none;
-        background-color: #d6564f;
+        background-color: #fbc65f;
         cursor: pointer;
-        color: #f0d8d9;
+        color: #886a30;
     }
 
     .popup {

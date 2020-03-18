@@ -22,8 +22,7 @@ const onScrollHandler = (e) => {
         if (section.offsetTop - $('.header').offsetHeight <= scroll && (section.offsetTop + section.offsetHeight) > scroll) {
             menuItems.forEach( e => {
                 e.classList.remove("header-menu_active");
-                const href = e.getAttribute('href');
-                if ( href.includes(section.classList.value) ) {
+                if ( e.getAttribute('href').includes(section.classList.value) ) {
                     e.classList.add("header-menu_active");
                 }
             });
@@ -76,7 +75,7 @@ const moveSlidesAhead = (direction) => {
 
 //set background for slides
 const setSlideBackgroundColor = (direction) => {
-    (direction === "RIGHT" && currentSlide == 0) || (direction === "LEFT" && currentSlide == 2)
+    currentSlide == 0
         ? $('.slider').classList.add('slider-blue')
         : $('.slider').classList.remove('slider-blue');
 }
@@ -125,9 +124,23 @@ const setActivePortfolioMenuHandler = (e) => {
     })
 }
 
+const replace = (oldArr) => {
+    portfolioImagesSrc.sort(() => Math.random() - 0.5);
+    oldArr.forEach( (el, i) => {
+        if (el === portfolioImagesSrc[i]) {
+            replace(oldArr);
+        };
+    });
+}
+
+const shuffle = () => {
+    const oldArr = [...portfolioImagesSrc];
+    replace(oldArr);
+}
+
 //pictures sort in portfolio
 const replacePortfolioImages = () => {
-    portfolioImagesSrc.sort( () => Math.random() - 0.5 );
+    shuffle();
     for ( let i=0; i<portfolioImagesSrc.length; i++ ) {
         $All(".portfolio-image")[i].src = portfolioImagesSrc[i];
     }
