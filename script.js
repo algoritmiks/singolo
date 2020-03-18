@@ -22,7 +22,7 @@ const onScrollHandler = (e) => {
         if (section.offsetTop - $('.header').offsetHeight <= scroll && (section.offsetTop + section.offsetHeight) > scroll) {
             menuItems.forEach( e => {
                 e.classList.remove("header-menu_active");
-                if ( e.getAttribute('href').includes(section.classList.value) ) {
+                if ( e.getAttribute('href').includes(section.classList[0]) ) {
                     e.classList.add("header-menu_active");
                 }
             });
