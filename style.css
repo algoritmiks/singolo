@@ -590,29 +590,9 @@
         margin-left: 4px;
     }
 
-    #services {
-        position: absolute;
-        width: 1px;
-        height: 1x;
-        background-color: rgba(0,0,0,0);
-        left: -200px;
-        top:600px;
-    }
-    
-    #portfolio {
-        position: absolute;
-        width: 1px;
-        height: 1x;
-        background-color: rgba(0,0,0,0);
-        left: -200px;
-        top:1100px;
-    }
-
-    #about {
-        position: absolute;
-        width: 1px;
-        height: 1x;
-        background-color: rgba(0,0,0,0);
-        left: -200px;
-        top:1960px;
+    .anchor {
+        display: block;
+        position: relative;
+        top: -140px;
+        visibility: hidden;
     }

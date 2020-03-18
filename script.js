@@ -8,17 +8,35 @@ $All(".portfolio-image").forEach( e => portfolioImagesSrc.push(e.src) );
 //first slide position
 $All(".slider-image")[0].style.left="0%";
 
-$(".header-menu").addEventListener( 'click', e => switchHeaderMenuHandler(e) );
-
-//set active category in header menu
-const switchHeaderMenuHandler = (e) => {
-    $(".header-menu").querySelectorAll('a').forEach(el => {
-        if ( e.target.tagName === "A" ) {
-            el.classList.remove("header-menu_active");
-            e.target.classList.add("header-menu_active");
+const onScrollHandler = (e) => {
+    const sections = $All("section");
+    const menuItems = $(".header-menu").querySelectorAll("a");
+    const totalMenuItems = menuItems.length;
+    let scroll = window.scrollY;
+    let scrollHeight = Math.max(
+        document.body.scrollHeight, document.documentElement.scrollHeight,
+        document.body.offsetHeight, document.documentElement.offsetHeight,
+        document.body.clientHeight, document.documentElement.clientHeight
+    );
+    sections.forEach( section => {
+        if (section.offsetTop - $('.header').offsetHeight <= scroll && (section.offsetTop + section.offsetHeight) > scroll) {
+            menuItems.forEach( e => {
+                e.classList.remove("header-menu_active");
+                const href = e.getAttribute('href');
+                if ( href.includes(section.classList.value) ) {
+                    e.classList.add("header-menu_active");
+                }
+            });
         }
-    })
+    });
+    if (scroll >= scrollHeight - innerHeight) {
+        menuItems.forEach(e=> e.classList.remove("header-menu_active"));
+        menuItems[totalMenuItems-1].classList.add("header-menu_active");
+    } 
 }
+
+document.addEventListener('scroll', onScrollHandler);
+
 
 $(".slider-items__right-arrow").addEventListener( 'click', () => moveSlidesHandler("RIGHT") );
 $(".slider-items__left-arrow").addEventListener( 'click', () => moveSlidesHandler("LEFT") );
