@@ -124,26 +124,26 @@ const setActivePortfolioMenuHandler = (e) => {
     })
 }
 
-const replace = (oldArr) => {
-    portfolioImagesSrc.sort(() => Math.random() - 0.5);
-    oldArr.forEach( (el, i) => {
-        if (el === portfolioImagesSrc[i]) {
-            replace(oldArr);
-        };
-    });
-}
-
-const shuffle = () => {
-    const oldArr = [...portfolioImagesSrc];
-    replace(oldArr);
-}
-
 //pictures sort in portfolio
 const replacePortfolioImages = () => {
     shuffle();
     for ( let i=0; i<portfolioImagesSrc.length; i++ ) {
         $All(".portfolio-image")[i].src = portfolioImagesSrc[i];
     }
+}
+
+//shuffle array
+const shuffle = () => {
+    const oldArr = [...portfolioImagesSrc];
+    const replace = () => {
+        portfolioImagesSrc.sort(() => Math.random() - 0.5);
+        oldArr.forEach( (el, i) => {
+            if (el === portfolioImagesSrc[i]) {
+                replace();
+            };
+        });
+    }
+    replace();
 }
 
 $(".portfolio-items").addEventListener( 'click', e => setActivePortfolioImageHandler(e) );
