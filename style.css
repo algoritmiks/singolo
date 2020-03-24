@@ -112,9 +112,80 @@
     .slider-items {
       position: relative;
       overflow: hidden;
-      max-width: 940px;
-      height: 585px;
+      width: 100%;
+      max-height: 585px; 
+      height: 58.5vw;
     }
+
+    .slider-items__right-phone {
+      margin-left: 14%;
+      width: calc(57% + 4px);
+      height: auto;
+    }
+
+    .slider-items__right-phone img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .right-phone-black-screen {
+      position: absolute;
+      /* width: 335px; */
+      width: calc(34% - 5px);
+      /* height: 190px; */
+      height: calc(33% - 3px);
+      background-color: black;
+      /* top: 188px; */
+      top: calc(32% + 1px);
+      left: 495px;
+      border-radius: 1px;
+    }
+
+    .right-phone-switcher {
+      position: absolute;
+      width: 459px;
+      height: 215px;
+      border-radius: 27px;
+      background-color: rgba(90, 190, 90, 0);
+      top: 175px;
+      left: 376px;
+      cursor: pointer;
+    }
+
+    .slider-items__1left-phone {
+      margin-left: 1%;
+      width: calc(5% + 4px);
+    }
+
+    .slider-items__left-phone img {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .left-phone-switcher {
+      position: absolute;
+      width: 215px;
+      height: 460px;
+      border-radius: 27px;
+      background-color: rgba(90, 190, 90, 0);
+      top: 52px;
+      left: 80px;
+      cursor: pointer;
+    }
+
+
+
+    .left-phone-black-screen {
+      position: absolute;
+      width: 190px;
+      height: 335px;
+      background-color: black;
+      border-radius: 1px;
+      top: 117px;
+      left: 93px;
+    }
+
+
 
     .slider-items__left-arrow {
       position: absolute;
@@ -134,7 +205,7 @@
 
     .slider-image {
       position: absolute;
-      width: 940px;
+      width: 100%;
       height: 100%;
       transition: all ease 1s;
     }
@@ -152,47 +223,7 @@
       cursor: pointer;
     }
 
-    .left-phone-switcher {
-      position: absolute;
-      width: 215px;
-      height: 460px;
-      border-radius: 27px;
-      background-color: rgba(90, 190, 90, 0);
-      top: 52px;
-      left: 80px;
-      cursor: pointer;
-    }
 
-    .right-phone-switcher {
-      position: absolute;
-      width: 459px;
-      height: 215px;
-      border-radius: 27px;
-      background-color: rgba(90, 190, 90, 0);
-      top: 175px;
-      left: 376px;
-      cursor: pointer;
-    }
-
-    .left-phone-black-screen {
-      position: absolute;
-      width: 190px;
-      height: 335px;
-      background-color: black;
-      border-radius: 1px;
-      top: 117px;
-      left: 93px;
-    }
-
-    .right-phone-black-screen {
-      position: absolute;
-      width: 335px;
-      height: 190px;
-      background-color: black;
-      top: 188px;
-      left:435px;
-      border-radius: 1px;
-    }
 
     .hidden {
       display: none;
