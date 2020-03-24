@@ -161,12 +161,12 @@
 
     .right-phone-switcher {
       position: absolute;
-      width: 459px;
-      height: 215px;
-      border-radius: 27px;
+      width: 44.5%;
+      height: 36%;
+      border-radius: 8.9%;
       background-color: rgba(90, 190, 90, 0);
-      top: 175px;
-      left: 376px;
+      top: 29.6%;
+      left: 46%;
       cursor: pointer;
     }
 
@@ -182,16 +182,14 @@
     
     .left-phone-switcher {
       position: absolute;
-      width: 215px;
-      height: 460px;
-      border-radius: 27px;
+      width: 21.7%;
+      height: 78.7%;
+      border-radius: 8.9%;
       background-color: rgba(90, 190, 90, 0);
-      top: 52px;
-      left: 80px;
+      top: 8.1%;
+      left: 7.9%;
       cursor: pointer;
     }
-
-
 
     .left-phone-black-screen {
       position: absolute;
@@ -202,8 +200,6 @@
       top: 19.3%;
       left: 9.3%;
     }
-
-
 
     .slider-items__left-arrow {
       position: absolute;
@@ -222,18 +218,13 @@
       transform: translate(0%, -50%);
     }
 
-
-
     .slider-items__right-arrow img {
       -webkit-transform: scaleX(-1);
     }
  
-
     .arrow_hover {
       cursor: pointer;
     }
-
-
 
     .hidden {
       display: none;
@@ -442,6 +433,7 @@
       margin-right: 7px;
       font-weight: 530;
     }
+    
     .btn:focus {
       outline: none;
     }
@@ -650,21 +642,22 @@
 
 
     @media (max-width: 768px) {
-
-      .header-menu__link:hover {
-        color: white;
+      .left-phone-switcher {
+        width: 21.7%;
+        height: 72.7%;
+        top: 11.1%;
+        left: 7.9%;
       }
 
-
+      .right-phone-switcher {
+        width: 44.5%;
+        height: 33%;
+        top: 31%;
+        left: 46%;
+      }
+      
       .portfolio-image {
         width: calc(100% / 3 - 20px);
-      }
-
-      .right-phone-black-screen {
-        width: 32.45%;
-        height: 28.9%;
-        top: 33.24%;
-        left: 51.8%;
       }
 
       .left-phone-black-screen {
@@ -672,6 +665,13 @@
         height: 52.8%;
         top: 21.6%;
         left: 9.3%;
+      }
+
+      .right-phone-black-screen {
+        width: 32.45%;
+        height: 28.9%;
+        top: 33.24%;
+        left: 51.8%;
       }
 
       .services-items {
@@ -683,18 +683,32 @@
 
     @media (max-width: 375px) {
 
-      .right-phone-black-screen {
-        width: 32.45%;
-        height: 26.9%;
-        top: 33.9%;
-        left: 51.8%;
+      .left-phone-switcher {
+        width: 21.7%;
+        height: 66.2%;
+        top: 13.9%;
+        left: 7.9%;
       }
 
+      .right-phone-switcher {
+        width: 44.5%;
+        height: 30.2%;
+        top: 32.1%;
+        left: 46%;
+      }
+      
       .left-phone-black-screen {
         width: 19.1%;
         height: 48%;
         top: 23.4%;
         left: 9.1%;
+      }
+
+      .right-phone-black-screen {
+        width: 32.45%;
+        height: 26.9%;
+        top: 33.9%;
+        left: 51.8%;
       }
 
       .services-items {
