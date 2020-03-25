@@ -211,3 +211,25 @@ const popupButtonHandler = () => {
   $(".popup").classList.add("hidden");
   $("body").style.overflow = "visible";
 }
+
+const clickHamburgerHandler = () => {
+  if ($(".header-navigation").style.display === "none") {
+    $(".hamburger").classList.add("hamburger__opened");
+    $(".header-navigation").style.display = "flex";
+    $(".logo").style.left = "25%";
+  } else {
+    $(".hamburger").classList.remove("hamburger__opened");
+    $(".header-navigation").style.display = "none";
+    $(".logo").style.left = "50%";
+  }
+}
+
+$(".hamburger").addEventListener('click', clickHamburgerHandler);
+
+window.onresize = () => {
+  if(window.innerWidth < 768) {
+    $(".header-navigation").style.display = "none";
+  } else {
+    $(".header-navigation").style.display = "flex";
+  }
+}
