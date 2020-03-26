@@ -660,16 +660,14 @@
 
       .header-navigation {
         position: fixed;
-
-        /* display: flex; */
-        display: none;
-        
+        display: flex;
+        transition: all ease 0.6s;
 
         padding: 0;
         align-items: center;
         /* flex-direction: column; */
         top: 0;
-        left: 0;
+        left: -100%;
         width: 278px;
         height: 100vh;
         /* box-shadow: cadetblue; */
@@ -702,7 +700,7 @@
         left: 50%;
         transform: translate(-50%, 0%);
         z-index: 50;
-        /* height: 45px; */
+        transition: all ease 0.6s;
       }
 
       .header {
@@ -715,6 +713,7 @@
 
       .hamburger {
         display: block;
+        transition: all ease 0.6s;
       }
       
     }

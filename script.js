@@ -212,24 +212,36 @@ const popupButtonHandler = () => {
   $("body").style.overflow = "visible";
 }
 
+const openSideMenu = () => {
+  $(".hamburger").classList.add("hamburger__opened");
+  $(".header-navigation").style.left = "0%";
+  $(".logo").style.left = "25%";
+  $("body").style.overflow="hidden";
+}
+
+
+const closeSideMenu = () => {
+  $(".hamburger").classList.remove("hamburger__opened");
+  $(".header-navigation").style.left = "-100%";
+  $(".logo").style.left = "50%";
+  $("body").style.overflow = "visible";
+}
+
 const clickHamburgerHandler = () => {
-  if ($(".header-navigation").style.display === "none") {
-    $(".hamburger").classList.add("hamburger__opened");
-    $(".header-navigation").style.display = "flex";
-    $(".logo").style.left = "25%";
+  if ($(".header-navigation").style.left === "-100%" || $(".header-navigation").style.left === "") {
+    openSideMenu();
   } else {
-    $(".hamburger").classList.remove("hamburger__opened");
-    $(".header-navigation").style.display = "none";
-    $(".logo").style.left = "50%";
+    closeSideMenu();
   }
 }
 
 $(".hamburger").addEventListener('click', clickHamburgerHandler);
 
-window.onresize = () => {
-  if(window.innerWidth < 768) {
-    $(".header-navigation").style.display = "none";
-  } else {
-    $(".header-navigation").style.display = "flex";
+
+const pressNavigationHandler = (e) => {
+  if (e.target.tagName === "A") {
+    closeSideMenu();
   }
 }
+
+$(".header-navigation").addEventListener('click', pressNavigationHandler);
