@@ -211,3 +211,37 @@ const popupButtonHandler = () => {
   $(".popup").classList.add("hidden");
   $("body").style.overflow = "visible";
 }
+
+const openSideMenu = () => {
+  $(".hamburger").classList.add("hamburger__opened");
+  $(".header-navigation").style.left = "0%";
+  $(".logo").style.left = "25%";
+  $("body").style.overflow="hidden";
+}
+
+
+const closeSideMenu = () => {
+  $(".hamburger").classList.remove("hamburger__opened");
+  $(".header-navigation").style.left = "-100%";
+  $(".logo").style.left = "50%";
+  $("body").style.overflow = "visible";
+}
+
+const clickHamburgerHandler = () => {
+  if ($(".header-navigation").style.left === "-100%" || $(".header-navigation").style.left === "") {
+    openSideMenu();
+  } else {
+    closeSideMenu();
+  }
+}
+
+$(".hamburger").addEventListener('click', clickHamburgerHandler);
+
+
+const pressNavigationHandler = (e) => {
+  if (e.target.tagName === "A") {
+    closeSideMenu();
+  }
+}
+
+$(".header-navigation").addEventListener('click', pressNavigationHandler);
