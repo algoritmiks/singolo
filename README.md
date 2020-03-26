@@ -1,5 +1,5 @@
 Singolo:
 
 
-[Deploy singolo DOM](https://algoritmiks.github.io/singolo)
+[Deploy full Singolo](https://algoritmiks.github.io/singolo)
 
