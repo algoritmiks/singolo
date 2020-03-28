@@ -239,7 +239,6 @@ const clickHamburgerHandler = () => {
 
 $(".hamburger").addEventListener('click', clickHamburgerHandler);
 
-
 const pressNavigationHandler = (e) => {
   if (e.target.tagName === "A") {
     closeSideMenu();
@@ -247,3 +246,9 @@ const pressNavigationHandler = (e) => {
 }
 
 $(".header-navigation").addEventListener('click', pressNavigationHandler);
+
+$(".acitve-mobile-menu").addEventListener('click', (e)=>{
+  if (e.target.classList.contains("header-navigation__background")) {
+    closeSideMenu();
+  }
+});

@@ -79,7 +79,7 @@
       left: 0;
       top: 0;
       z-index: 4;
-      background-color: rgba(0,0,0,0.6);
+      background-color:#2d303a8f;
       transition: all ease 1s;
     }
 
