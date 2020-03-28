@@ -217,6 +217,7 @@ const openSideMenu = () => {
   $(".header-navigation").style.left = "0%";
   $(".logo").style.left = "100px";
   $("body").style.overflow="hidden";
+  $(".acitve-mobile-menu").classList.add("header-navigation__background");
 }
 
 
@@ -225,6 +226,7 @@ const closeSideMenu = () => {
   $(".header-navigation").style.left = "-100%";
   $(".logo").style.left = "50%";
   $("body").style.overflow = "visible";
+  $(".acitve-mobile-menu").classList.remove("header-navigation__background");
 }
 
 const clickHamburgerHandler = () => {
