@@ -41,10 +41,10 @@
     }
 
     .wrapper {
-      max-width: 1000px;
+      max-width: 960px;
       margin: 0 auto;
-      padding-left: 30px;
-      padding-right: 30px;
+      padding-left: 20px;
+      padding-right: 20px;
     }
     
     .hamburger {
@@ -152,8 +152,8 @@
     }
 
     .slider-items__right-phone {
-      margin-left: 14%;
-      width: calc(47% + 0px);
+      margin-left: 7%;
+      width: 47%;
       height: auto;
     }
 
@@ -162,26 +162,28 @@
       height: 100%;
     }
 
+
     .right-phone-black-screen {
       position: absolute;
       width: 32.4%;
-      height: 31.4%;
+      height: 30.1%;
       background-color: black;
-      top: 32%;
-      left: 51.8%;
+      top: 32.6%;
+      left: 48.3%;
       border-radius: 1px;
-    }
+  }
+
 
     .right-phone-switcher {
       position: absolute;
-      width: 44.5%;
-      height: 36%;
+      width: 44.6%;
+      height: 34.5%;
       border-radius: 8.9%;
       background-color: rgba(90, 190, 90, 0);
-      top: 29.6%;
-      left: 46%;
+      top: 30.3%;
+      left: 42.45%;
       cursor: pointer;
-    }
+  }
 
     .slider-items__left-phone {
       margin-left: 0.9%;
@@ -193,26 +195,27 @@
       height: 100%;
     }
     
+ 
     .left-phone-switcher {
       position: absolute;
       width: 21.7%;
-      height: 78.7%;
+      height: 75.7%;
       border-radius: 8.9%;
       background-color: rgba(90, 190, 90, 0);
-      top: 8.1%;
-      left: 7.9%;
+      top: 9.7%;
+      left: 11.4%;
       cursor: pointer;
-    }
+  }
 
     .left-phone-black-screen {
       position: absolute;
-      width: 19%;
-      height: 57.2%;
+      width: 18.9%;
+      height: 55.2%;
       background-color: black;
       border-radius: 1px;
-      top: 19.3%;
-      left: 9.3%;
-    }
+      top: 20.3%;
+      left: 12.8%;
+  }
 
     .slider-items__left-arrow {
       position: absolute;
@@ -296,7 +299,7 @@
     .services-item__description {
       font-size: 12px;
       line-height: 21px;
-      width: 220px;
+      max-width: 220px;
       text-align: justify;
       overflow: hidden;
       max-height: 63px;
@@ -477,7 +480,7 @@
     
     .footer {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       padding-top: 21px;
       padding-bottom: 18px;
@@ -603,6 +606,7 @@
       top: 50%;
       padding: 20px;
       transform: translate(-50%, -50%);
+      max-width: 50%;
     }
   
     .popup__text {
@@ -653,7 +657,72 @@
       visibility: hidden;
     }
 
+
+    @media (max-width: 768px) {
+
+      .services__description {
+
+        padding-right: 60px;
+    }
+
+    .services-item {
+      margin-right: 30px;
+    }
+
+    .services-item__description {
+      max-width: 225px;
+    }
+
+      .slide-wrapper {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .left-phone-switcher {
+        width: 21.7%;
+        height: 75.7%;
+        top: 9.5%;
+        left: 11.4%;
+    }
+
+
+      .right-phone-switcher {
+        width: 44.6%;
+        height: 34.3%;
+        top: 30.2%;
+        left: 42.5%;
+    }
+      
+      .portfolio-image {
+        width: calc(100% / 3 - 20px);
+      }
+
+      .left-phone-black-screen {
+        width: 18.9%;
+        height: 54.8%;
+        top: 20.3%;
+        left: 12.8%;
+    }
+
+
+      .right-phone-black-screen {
+        width: 32.3%;
+        height: 30.2%;
+        top: 32.4%;
+        left: 48.4%;
+    }
+
+      .services-items {
+        padding-right: 30px;
+      }
+    }
+
+
     @media (max-width: 767px) {
+
+      .services__description {
+        padding-right: 10px;
+    }
       .anchor {
         top: -96px;
       }
@@ -719,75 +788,42 @@
     }
 
 
-    @media (max-width: 768px) {
-      .left-phone-switcher {
-        width: 21.7%;
-        height: 72.7%;
-        top: 11.1%;
-        left: 7.9%;
-      }
+    @media (max-width: 739px) {
 
-      .right-phone-switcher {
-        width: 44.5%;
-        height: 33%;
-        top: 31%;
-        left: 46%;
-      }
-      
-      .portfolio-image {
-        width: calc(100% / 3 - 20px);
-      }
-
-      .left-phone-black-screen {
-        width: 19%;
-        height: 52.8%;
-        top: 21.6%;
-        left: 9.3%;
-      }
-
-      .right-phone-black-screen {
-        width: 32.45%;
-        height: 28.9%;
-        top: 33.24%;
-        left: 51.8%;
-      }
-
-      .services-items {
-        padding-right: 30px;
-      }
+      .services-item__description {
+        max-width: 100%;
     }
-
-
 
     @media (max-width: 375px) {
 
       .left-phone-switcher {
         width: 21.7%;
-        height: 66.2%;
-        top: 13.9%;
-        left: 7.9%;
-      }
+        height: 72.2%;
+        top: 10.7%;
+        left: 11.4%;
+    }
 
       .right-phone-switcher {
-        width: 44.5%;
-        height: 30.2%;
-        top: 32.1%;
-        left: 46%;
-      }
+        width: 44.4%;
+        height: 33.2%;
+        top: 30.45%;
+        left: 42.7%;
+    }
       
       .left-phone-black-screen {
-        width: 19.1%;
-        height: 48%;
-        top: 23.4%;
-        left: 9.1%;
-      }
+        width: 18.7%;
+        height: 52.95%;
+        top: 20.8%;
+        left: 12.8%;
+    }
+
 
       .right-phone-black-screen {
         width: 32.45%;
-        height: 26.9%;
-        top: 33.9%;
-        left: 51.8%;
-      }
+        height: 28.9%;
+        top: 32.6%;
+        left: 48.5%;
+    }
 
       .services-items {
         padding-right: 0px;
@@ -826,6 +862,14 @@
       .btn-submit {
         width: 100%;
       }
+
+      .btn {
+        margin-right: 0px;
+    }
+
+    .services-item {
+      margin-right: 10px;
+  }
     }
 
     

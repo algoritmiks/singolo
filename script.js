@@ -215,7 +215,7 @@ const popupButtonHandler = () => {
 const openSideMenu = () => {
   $(".hamburger").classList.add("hamburger__opened");
   $(".header-navigation").style.left = "0%";
-  $(".logo").style.left = "25%";
+  $(".logo").style.left = "100px";
   $("body").style.overflow="hidden";
 }
 
