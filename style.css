@@ -491,7 +491,7 @@
     
     .footer {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       padding-top: 21px;
       padding-bottom: 18px;
@@ -728,6 +728,14 @@
 
 
     @media (max-width: 767px) {
+      .footer {
+        justify-content: center;
+      }
+
+      .copyright {
+        display: none;
+      }
+
       .services__description {
         padding-right: 10px;
       }
