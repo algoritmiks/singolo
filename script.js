@@ -255,3 +255,5 @@ $(".acitve-mobile-menu").addEventListener('click', (e)=>{
     closeSideMenu();
   }
 });
+
+window.addEventListener( "resize", () => closeSideMenu() );
