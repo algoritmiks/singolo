@@ -3,7 +3,7 @@ const $All = c => document.querySelectorAll(c);
 let currentSlide = 0, nextSlide = 0, portfolioImagesSrc = [];
 
 //src of images to array
-$All(".portfolio-image").forEach(e => portfolioImagesSrc.push(e.src));
+// $All(".portfolio-image").forEach(e => portfolioImagesSrc.push(e.src));
 
 //first slide position
 $All(".slider-image")[0].style.left = "0%";
@@ -125,26 +125,29 @@ const setActivePortfolioMenuHandler = (e) => {
   })
 }
 
-//pictures sort in portfolio
+//replace pictures in portfolio
 const replacePortfolioImages = () => {
-  shuffle();
-  for (let i = 0; i < portfolioImagesSrc.length; i++) {
-    $All(".portfolio-image")[i].src = portfolioImagesSrc[i];
-  }
+  const newNodeList = shuffle();
+  $(".portfolio-items").innerHTML = "";
+  newNodeList.forEach( node => {
+    $(".portfolio-items").appendChild(node);
+  });
 }
 
-//shuffle array
+//shuffle nodes array
 const shuffle = () => {
-  const oldArr = [...portfolioImagesSrc];
+  const oldNodeList=[...$All(".portfolio-image")];
+  const newNodeList = [...$All(".portfolio-image")];
   const replace = () => {
-    portfolioImagesSrc.sort(() => Math.random() - 0.5);
-    oldArr.forEach((el, i) => {
-      if (el === portfolioImagesSrc[i]) {
+    newNodeList.sort(() => Math.random() - 0.5);
+    oldNodeList.forEach((el, i) => {
+      if (el === newNodeList[i]) {
         replace();
       };
     });
   }
   replace();
+  return newNodeList;
 }
 
 $(".portfolio-items").addEventListener('click', e => setActivePortfolioImageHandler(e));
