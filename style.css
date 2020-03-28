@@ -673,17 +673,16 @@
 
 
       .services__description {
+       padding-right: 60px;
+      }
 
-        padding-right: 60px;
-    }
+      .services-item {
+        margin-right: 30px;
+      }
 
-    .services-item {
-      margin-right: 30px;
-    }
-
-    .services-item__description {
-      max-width: 225px;
-    }
+      .services-item__description {
+        max-width: 225px;
+      }
 
       .slide-wrapper {
         padding-left: 15px;
@@ -695,15 +694,14 @@
         height: 75.7%;
         top: 9.5%;
         left: 11.4%;
-    }
-
+      }
 
       .right-phone-switcher {
         width: 44.6%;
         height: 34.3%;
         top: 30.2%;
         left: 42.5%;
-    }
+      }
       
       .portfolio-image {
         width: calc(100% / 3 - 20px);
@@ -714,15 +712,14 @@
         height: 54.8%;
         top: 20.3%;
         left: 12.8%;
-    }
-
+      }
 
       .right-phone-black-screen {
         width: 32.3%;
         height: 30.2%;
         top: 32.4%;
         left: 48.4%;
-    }
+      }
 
       .services-items {
         padding-right: 30px;
